@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class Page extends StatelessWidget {
+  const Page({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,32 +10,33 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.deepPurple,
         centerTitle: true,
         elevation: 0,
+
         title: IconButton(
-          icon: const Icon(Icons.home),
+          icon: const Icon(Icons.home, size: 40),
           onPressed: () {
-            //Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
+            Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
           },
         ),
+
+        /*
         actions: [
           IconButton(
-            icon: const Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back, size: 40),
             onPressed: () => Navigator.pop(context, false),
           ),
         ], // actions = right side of app bar, for back button if needed
+        */
+
       ),
       // body: const Text("DAACKS"), backgroundColor: Colors.deepPurple,
-      body: const HomeBody(), backgroundColor: Colors.deepPurple,
+      body: const PageBody(), backgroundColor: Colors.deepPurple,
     );
   }
 }
 
-class HomeBody extends StatefulWidget {
-  const HomeBody({super.key});
-  @override
-  State<HomeBody> createState() => _HomeBodyState();
-}
+class PageBody extends StatelessWidget {
+  const PageBody({super.key});
 
-class _HomeBodyState extends State<HomeBody> {
   @override
   Widget build(BuildContext context) {
     return Center(child: Container(
@@ -48,11 +50,12 @@ class _HomeBodyState extends State<HomeBody> {
           )
       ),
       child: const Text(
-          "Stateful template",
+          "Settings",
           style: TextStyle(fontSize: 30, color: Colors.white)),
     ),
     );
   }
 }
+
 
 

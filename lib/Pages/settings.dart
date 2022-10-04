@@ -11,11 +11,13 @@ class Settings extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
         title: IconButton(
-          icon: const Icon(Icons.home),
+          icon: const Icon(Icons.home, size: 40),
           onPressed: () {
             Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
           },
         ),
+
+
       ),
       // body: const Text("DAACKS"), backgroundColor: Colors.deepPurple,
       body: const SettingsBody(), backgroundColor: Colors.deepPurple,

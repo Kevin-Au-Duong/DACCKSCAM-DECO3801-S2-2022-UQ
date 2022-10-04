@@ -6,7 +6,7 @@ import 'package:frontend/Pages/settings.dart';
 
 void main() {
   runApp(MaterialApp(
-    initialRoute: '/login',
+    initialRoute: '/home',
     routes: {
       '/login': (context) => const Login(),
       '/home': (context) => const Home(),
