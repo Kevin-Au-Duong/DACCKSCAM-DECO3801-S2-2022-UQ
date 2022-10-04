@@ -80,7 +80,11 @@ class HomeBody extends StatefulWidget {
 class _HomeBodyState extends State<HomeBody> {
 
   String? name = globals.name;
-  int numViolations = globals.violations.length;
+  //int numViolations = globals.violations.length;
+  int numViolations = 420;
+  int leaderboardPercentile = globals.leaderboardPercentile;
+  String? vehicleName = globals.vehicleName;
+  String vehicleImage = globals.vehicleImage;
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +93,7 @@ class _HomeBodyState extends State<HomeBody> {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 20.0, bottom: 20),
+            padding: const EdgeInsets.only(bottom: 10),
             child: Row(
               children: [
                 Text(
@@ -109,8 +113,8 @@ class _HomeBodyState extends State<HomeBody> {
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                   SizedBox(
-                    height: 150,
-                    width: 150,
+                    height: 180,
+                    width: 180,
                     child: Card(
                       color: Colors.white10,
                       shape: RoundedRectangleBorder(
@@ -124,14 +128,20 @@ class _HomeBodyState extends State<HomeBody> {
                           print("Tapped rule violations card");
                         },
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.only(bottom: 16.0),
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: const [
+                                    Icon(Icons.chevron_right, color: Colors.white54, size: 32,),
+                                  ],
+                                ),
                                 Text(
                                   '$numViolations',
-                                  style: const TextStyle(fontSize: 80, color: Colors.white) ,
+                                  style: const TextStyle(fontSize: 70, color: Colors.white) ,
                                 ),
                                 const Text(
                                   'Last Drive',
@@ -144,8 +154,113 @@ class _HomeBodyState extends State<HomeBody> {
                     ),
                   )
                 ],
-              )
+              ), // Rule violations column
+              const Spacer(),
+              Column(
+                children: [
+                  const Text(
+                    'Leaderboard',
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                  SizedBox(
+                    height: 180,
+                    width: 180,
+                    child: Card(
+                        color: Colors.white10,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        child: InkWell(
+                          splashColor: Colors.purple,
+                          borderRadius: BorderRadius.circular(30.0),
+                          onTap:() {
+                            //TODO: Go to rule violations page
+                            print("Tapped Leaderboard card");
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 16.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Row(
+                                  children: const [
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 16.0),
+                                      child: Text(
+                                        'Top',
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(color: Colors.white, fontSize: 18),
+                                      ),
+                                    ),
+                                    Spacer(),
+                                    Icon(Icons.chevron_right, color: Colors.white54, size: 32,),
+                                  ],
+                                ),
+                                Text(
+                                  '$leaderboardPercentile%',
+                                  style: const TextStyle(fontSize: 70, color: Colors.white) ,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 16.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: const [
+                                      Text(
+                                        'Of Drivers',
+                                        style: TextStyle(fontSize: 18, color: Colors.white),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                    ),
+                  ),
+                ],
+              ), // Leaderboard column
             ],
+          ),
+          SizedBox(
+            height: 300,
+            width: 400,
+            child: Card(
+              color: Colors.white10,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+              child: InkWell(
+                splashColor: Colors.purple,
+                borderRadius: BorderRadius.circular(30.0),
+                onTap:() {
+                  //TODO: Go to rule violations page
+                  print("Tapped vehicle card");
+                },
+                child: Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            "$name's $vehicleName",
+                            style: const TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Image(image: AssetImage(vehicleImage), fit: BoxFit.contain),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           )
         ],
       ),
