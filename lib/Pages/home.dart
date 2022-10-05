@@ -223,40 +223,43 @@ class _HomeBodyState extends State<HomeBody> {
               ), // Leaderboard column
             ],
           ),
-          SizedBox(
-            height: 300,
-            width: 400,
-            child: Card(
-              color: Colors.white10,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-              child: InkWell(
-                splashColor: Colors.purple,
-                borderRadius: BorderRadius.circular(30.0),
-                onTap:() {
-                  //TODO: Go to rule violations page
-                  print("Tapped vehicle card");
-                },
-                child: Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "$name's $vehicleName",
-                            style: const TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+          Padding(
+            padding: const EdgeInsets.only(top: 16),
+            child: SizedBox(
+              height: 300,
+              width: 400,
+              child: Card(
+                color: Colors.white10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                child: InkWell(
+                  splashColor: Colors.purple,
+                  borderRadius: BorderRadius.circular(30.0),
+                  onTap:() {
+                    //TODO: Go to rule violations page
+                    print("Tapped vehicle card");
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              "$name's $vehicleName",
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      Image(image: AssetImage(vehicleImage), fit: BoxFit.contain),
-                    ],
+                          ],
+                        ),
+                        Image(image: AssetImage(vehicleImage), fit: BoxFit.contain),
+                      ],
+                    ),
                   ),
                 ),
               ),

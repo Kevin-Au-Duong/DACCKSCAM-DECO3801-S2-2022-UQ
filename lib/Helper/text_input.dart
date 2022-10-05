@@ -25,12 +25,12 @@ class _TextInput extends State<TextInput> {
             ),
             validator: (String? value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter some text';
+                  return 'Please enter some text';
               } else if (value.length > 13) {
-                return 'Please shorten your name to 12 characters at most';
+                  return 'Please shorten your name to 12 characters at most';
               } else {
-                globals.name = value;
-                Navigator.pushReplacementNamed(context, '/home');
+                  globals.name = value;
+                  Navigator.pushReplacementNamed(context, '/home');
               }
               return null;
             },
