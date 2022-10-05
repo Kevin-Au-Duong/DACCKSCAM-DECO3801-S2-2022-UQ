@@ -10,6 +10,7 @@ class Page extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
         title: IconButton(
+          padding: EdgeInsets.zero,
           icon: const Icon(Icons.home, size: 40),
           onPressed: () {
             //Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
