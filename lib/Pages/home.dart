@@ -17,6 +17,18 @@ class Home extends StatelessWidget {
           icon: const Icon(Icons.menu, size: 40), // change this size and style
           onPressed: () => _scaffoldKey.currentState?.openDrawer(),
         ),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: GestureDetector(
+              onTap: () { },
+              child: const Icon(
+                Icons.refresh,
+                size: 26.0,
+              )
+            )
+          )
+        ],
         title: const Text(
           'Home',
           style: TextStyle(
