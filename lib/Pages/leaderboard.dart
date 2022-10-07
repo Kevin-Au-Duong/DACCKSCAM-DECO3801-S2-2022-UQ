@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Violations extends StatelessWidget {
-  const Violations({super.key});
+class Leaderboard extends StatelessWidget {
+  const Leaderboard({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,39 +28,39 @@ class Violations extends StatelessWidget {
 
       ),
       // body: const Text("DAACKS"), backgroundColor: Colors.deepPurple,
-      body: const ViolationsBody(), backgroundColor: Colors.deepPurple,
+      body: const LeaderboardBody(), backgroundColor: Colors.deepPurple,
     );
   }
 }
 
-class ViolationsBody extends StatefulWidget {
-  const ViolationsBody({super.key});
+class LeaderboardBody extends StatefulWidget {
+  const LeaderboardBody({super.key});
   @override
-  State<ViolationsBody> createState() => _ViolationsBodyState();
+  State<LeaderboardBody> createState() => _LeaderboardBodyState();
 }
 
-class _ViolationsBodyState extends State<ViolationsBody> {
+class _LeaderboardBodyState extends State<LeaderboardBody> {
   @override
   Widget build(BuildContext context) {
     return Center(child: Container(
-      alignment: Alignment.center,
-      height: 700,
-      width: 500,
-      decoration: const BoxDecoration(
+        alignment: Alignment.center,
+        height: 700,
+        width: 500,
+        decoration: const BoxDecoration(
           color: Colors.black,
-          ),
-      child: Column(
-        children: const [
-        Padding(
-          padding: EdgeInsets.all(15.0),
-          child: Text("Violations",
-              textAlign: TextAlign.left,
-              style: TextStyle(fontSize: 30, color: Colors.white)),
         ),
-      ]
-      )
+        child: Column(
+            children: const [
+              Padding(
+                padding: EdgeInsets.all(15.0),
+                child: Text("Leaderboard",
+                    style: TextStyle(fontSize: 30, color: Colors.white)),
+              ),
+            ]
+        )
     ),
     );
   }
 }
+
 
