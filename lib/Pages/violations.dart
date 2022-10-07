@@ -48,16 +48,19 @@ class _ViolationsBodyState extends State<ViolationsBody> {
       width: 500,
       decoration: const BoxDecoration(
           color: Colors.black,
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(50), topRight: Radius.circular(50)
-          )
-      ),
-      child: const Text(
-          "Violations",
-          style: TextStyle(fontSize: 30, color: Colors.white)),
+          ),
+      child: Column(
+        children: const [
+        Padding(
+          padding: EdgeInsets.all(15.0),
+          child: Text("Violations",
+              textAlign: TextAlign.left,
+              style: TextStyle(fontSize: 30, color: Colors.white)),
+        ),
+      ]
+      )
     ),
     );
   }
 }
-
 

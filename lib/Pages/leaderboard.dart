@@ -43,18 +43,21 @@ class _LeaderboardBodyState extends State<LeaderboardBody> {
   @override
   Widget build(BuildContext context) {
     return Center(child: Container(
-      alignment: Alignment.center,
-      height: 700,
-      width: 500,
-      decoration: const BoxDecoration(
+        alignment: Alignment.center,
+        height: 700,
+        width: 500,
+        decoration: const BoxDecoration(
           color: Colors.black,
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(50), topRight: Radius.circular(50)
-          )
-      ),
-      child: const Text(
-          "Leaderboard",
-          style: TextStyle(fontSize: 30, color: Colors.white)),
+        ),
+        child: Column(
+            children: const [
+              Padding(
+                padding: EdgeInsets.all(15.0),
+                child: Text("Leaderboard",
+                    style: TextStyle(fontSize: 30, color: Colors.white)),
+              ),
+            ]
+        )
     ),
     );
   }
