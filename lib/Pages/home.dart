@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/Helper/globals.dart' as globals;
+import 'package:frontend/Pages/violations.dart';
+import 'package:frontend/Pages/leaderboard.dart';
 final _scaffoldKey = GlobalKey<ScaffoldState>();
 
 
@@ -136,8 +138,12 @@ class _HomeBodyState extends State<HomeBody> {
                         splashColor: Colors.purple,
                         borderRadius: BorderRadius.circular(30.0),
                         onTap:() {
-                          //TODO: Go to rule violations page
-                          print("Tapped rule violations card");
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const Violations(),
+                            ),
+                          );
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 16.0),
@@ -186,8 +192,12 @@ class _HomeBodyState extends State<HomeBody> {
                           splashColor: Colors.purple,
                           borderRadius: BorderRadius.circular(30.0),
                           onTap:() {
-                            //TODO: Go to rule violations page
-                            print("Tapped Leaderboard card");
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Leaderboard(),
+                              ),
+                            );
                           },
                           child: Padding(
                             padding: const EdgeInsets.only(bottom: 16.0),
