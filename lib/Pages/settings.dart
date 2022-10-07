@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Settings extends StatelessWidget {
@@ -29,7 +30,6 @@ class SettingsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO: Implement onPressed1 button.
     var onPressed1;
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -51,20 +51,24 @@ class SettingsBody extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(10))),
           elevation: 20,
           margin: const EdgeInsets.all(10),
-          color: Colors.grey,
-          child: Row(children: [
-            const Text("Account",
+          color: const Color.fromARGB(175, 110, 106, 106),
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 10, top: 0, right: 0, bottom: 0),
+            child: Row(children: [
+              const Text("Account",
                 style: TextStyle(fontSize: 20, color: Colors.white)),
-            IconButton(
-              onPressed: onPressed1,
-              icon: const Icon(Icons.arrow_right_sharp),
-              iconSize: 20,
-              alignment: Alignment.centerRight,
-            )
-          ]),
-          // child: Text(
-          //   "Account",
-          //   style: TextStyle(fontSize: 15, color: Colors.white)),
+              IconButton(
+                onPressed: onPressed1,
+                icon: const Icon(
+                  Icons.arrow_right_sharp, 
+                  color: Colors.white),
+                iconSize: 50,
+                color: Colors.white,
+                alignment: Alignment.centerRight,
+              )
+            ]),
+          ),
         ),
 
         Card(
@@ -72,17 +76,24 @@ class SettingsBody extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(10))),
           elevation: 20,
           margin: const EdgeInsets.all(10),
-          color: Colors.grey,
-          child: Row(children: [
-            const Text("Notifications",
+          color: const Color.fromARGB(175, 110, 106, 106),
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 10, top: 0, right: 0, bottom: 0),
+            child: Row(children: [
+              const Text("Notifications",
                 style: TextStyle(fontSize: 20, color: Colors.white)),
-            IconButton(
-              onPressed: onPressed1,
-              icon: const Icon(Icons.arrow_right_sharp),
-              iconSize: 20,
-              alignment: Alignment.centerRight,
-            )
-          ]),
+              IconButton(
+                onPressed: onPressed1,
+                icon: const Icon(
+                  Icons.arrow_right_sharp, 
+                  color: Colors.white),
+                iconSize: 50,
+                color: Colors.white,
+                alignment: Alignment.centerRight,
+              )
+            ]),
+          ),
         ),
 
         Card(
@@ -90,17 +101,24 @@ class SettingsBody extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(10))),
           elevation: 20,
           margin: const EdgeInsets.all(10),
-          color: Colors.grey,
-          child: Row(children: [
-            const Text("Privacy",
+          color: const Color.fromARGB(175, 110, 106, 106),
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 10, top: 0, right: 0, bottom: 0),
+            child: Row(children: [
+              const Text("Privacy",
                 style: TextStyle(fontSize: 20, color: Colors.white)),
-            IconButton(
-              onPressed: onPressed1,
-              icon: const Icon(Icons.arrow_right_sharp),
-              iconSize: 20,
-              alignment: Alignment.centerRight,
-            )
-          ]),
+              IconButton(
+                onPressed: onPressed1,
+                icon: const Icon(
+                  Icons.arrow_right_sharp, 
+                  color: Colors.white),
+                iconSize: 50,
+                color: Colors.white,
+                alignment: Alignment.centerRight,
+              )
+            ]),
+          ),
         ),
 
         Card(
@@ -108,17 +126,23 @@ class SettingsBody extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(10))),
           elevation: 20,
           margin: const EdgeInsets.all(10),
-          color: Colors.grey,
-          child: Row(children: [
-            const Text("Support",
+          color: const Color.fromARGB(175, 110, 106, 106),
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 10, top: 0, right: 0, bottom: 0),
+            child: Row(children: [
+              const Text("Support",
                 style: TextStyle(fontSize: 20, color: Colors.white)),
-            IconButton(
-              onPressed: onPressed1,
-              icon: const Icon(Icons.arrow_right_sharp),
-              iconSize: 20,
-              alignment: Alignment.centerRight,
-            )
-          ]),
+              IconButton(
+                onPressed: onPressed1,
+                icon: const Icon(
+                  Icons.arrow_right_sharp, 
+                  color: Colors.white),
+                iconSize: 50,
+                alignment: Alignment.centerRight,
+              )
+            ]),
+          ),
         ),
 
         Card(
@@ -126,17 +150,23 @@ class SettingsBody extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(10))),
           elevation: 20,
           margin: const EdgeInsets.all(10),
-          color: Colors.grey,
-          child: Row(children: [
-            const Text("About",
+          color: const Color.fromARGB(175, 110, 106, 106),
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 10, top: 0, right: 0, bottom: 0),
+            child: Row(children: [
+              const Text("About",
                 style: TextStyle(fontSize: 20, color: Colors.white)),
-            IconButton(
-              onPressed: onPressed1,
-              icon: const Icon(Icons.arrow_right_sharp),
-              iconSize: 20,
-              alignment: Alignment.centerRight,
-            )
-          ]),
+              IconButton(
+                onPressed: onPressed1,
+                icon: const Icon(
+                  Icons.arrow_right_sharp, 
+                  color: Colors.white),
+                iconSize: 50,
+                alignment: Alignment.centerRight,
+              )
+            ]),
+          ),
         ),
       ]),
     );
