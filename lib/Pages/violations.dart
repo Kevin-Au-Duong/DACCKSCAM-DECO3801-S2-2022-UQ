@@ -13,7 +13,7 @@ class Violations extends StatelessWidget {
           padding: EdgeInsets.zero,
           icon: const Icon(Icons.home, size: 40),
           onPressed: () {
-            //Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
+            Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
           },
         ),
 
@@ -50,14 +50,20 @@ class _ViolationsBodyState extends State<ViolationsBody> {
           color: Colors.black,
           ),
       child: Column(
-        children: const [
-          Padding(
-            padding: EdgeInsets.all(15.0),
-            child: Text("Violations",
-              textAlign: TextAlign.left,
-              style: TextStyle(fontSize: 30, color: Colors.white)),
-        ),
-      ]
+        children: [
+          Row(
+            children: const [
+              Padding(
+              padding: EdgeInsets.all(15.0),
+              child: Text("Rule Violations",
+                  style: TextStyle(
+                      fontSize: 30, 
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold)),
+              ),
+            ],
+          ),
+        ],
       )
     ),
     );

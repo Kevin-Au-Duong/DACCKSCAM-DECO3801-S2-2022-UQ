@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Page extends StatelessWidget {
-  const Page({super.key});
+class Violations extends StatelessWidget {
+  const Violations({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +13,7 @@ class Page extends StatelessWidget {
           padding: EdgeInsets.zero,
           icon: const Icon(Icons.home, size: 40),
           onPressed: () {
-            //Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
+            Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
           },
         ),
 
@@ -28,36 +28,45 @@ class Page extends StatelessWidget {
 
       ),
       // body: const Text("DAACKS"), backgroundColor: Colors.deepPurple,
-      body: const PageBody(), backgroundColor: Colors.deepPurple,
+      body: const ViolationsBody(), backgroundColor: Colors.deepPurple,
     );
   }
 }
 
-class PageBody extends StatefulWidget {
-  const PageBody({super.key});
+class ViolationsBody extends StatefulWidget {
+  const ViolationsBody({super.key});
   @override
-  State<PageBody> createState() => _PageBodyState();
+  State<ViolationsBody> createState() => _ViolationsBodyState();
 }
 
-class _PageBodyState extends State<PageBody> {
+class _ViolationsBodyState extends State<ViolationsBody> {
   @override
   Widget build(BuildContext context) {
     return Center(child: Container(
-      alignment: Alignment.center,
-      height: 700,
-      width: 500,
-      decoration: const BoxDecoration(
+        alignment: Alignment.center,
+        height: 700,
+        width: 500,
+        decoration: const BoxDecoration(
           color: Colors.black,
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(50), topRight: Radius.circular(50)
-          )
-      ),
-      child: const Text(
-          "Stateful template",
-          style: TextStyle(fontSize: 30, color: Colors.white)),
+        ),
+        child: Column(
+          children: [
+            Row(
+              children: const [
+                Padding(
+                  padding: EdgeInsets.all(15.0),
+                  child: Text("Stateful template",
+                      style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold)),
+                ),
+              ],
+            ),
+          ],
+        )
     ),
     );
   }
 }
-
 

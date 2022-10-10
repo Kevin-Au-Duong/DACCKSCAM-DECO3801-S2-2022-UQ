@@ -13,7 +13,7 @@ class Leaderboard extends StatelessWidget {
           padding: EdgeInsets.zero,
           icon: const Icon(Icons.home, size: 40),
           onPressed: () {
-            //Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
+            Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
           },
         ),
 
