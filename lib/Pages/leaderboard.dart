@@ -50,14 +50,20 @@ class _LeaderboardBodyState extends State<LeaderboardBody> {
           color: Colors.black,
         ),
         child: Column(
-            children: const [
-              Padding(
+            children: [
+              const Padding(
                 padding: EdgeInsets.all(15.0),
                 child: Text("Leaderboard",
                     style: TextStyle(fontSize: 30, color: Colors.white)),
               ),
-            ]
-        )
+              Row(
+                children: const [
+                  Text("Clay"),
+                  Text("500"),
+                ],
+              ),
+            ],
+        ),
     ),
     );
   }
