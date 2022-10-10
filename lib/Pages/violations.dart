@@ -51,9 +51,9 @@ class _ViolationsBodyState extends State<ViolationsBody> {
           ),
       child: Column(
         children: const [
-        Padding(
-          padding: EdgeInsets.all(15.0),
-          child: Text("Violations",
+          Padding(
+            padding: EdgeInsets.all(15.0),
+            child: Text("Violations",
               textAlign: TextAlign.left,
               style: TextStyle(fontSize: 30, color: Colors.white)),
         ),

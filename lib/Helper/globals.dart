@@ -1,24 +1,18 @@
 library frontend.globals;
 
+import 'package:frontend/Helper/violation.dart';
+
 String? name = 'K-dawg';
 
 int numViolations = violations.length;
-
-var violations = <Map>[violation1, violation2];
 
 int leaderboardPercentile = 69;
 
 String? vehicleName = 'Kia Sportage';
 String vehicleImage = 'assets/KiaSportage2015.png';
 
-Map violation1 = {'Rule Violation': 'Stop Sign', 
-  'Description': 'Failure to Stop', 
-  'Severity': 'Major', 
-  'Consequences': -100};
-
-Map violation2 = {'Rule Violation': 'Speeding',
-  'Description': '90 in 80 Zone (9/s)',
-  'Severity': 'Major',
-  'Consequences': -90};
+Violation violation1 = Violation("Stop sign", "Failure to stop", -100);
+Violation violation2 = Violation("Speeding", "90 in 80 Zone", -90);
+List<Violation> violations = [violation1, violation2];
 
 

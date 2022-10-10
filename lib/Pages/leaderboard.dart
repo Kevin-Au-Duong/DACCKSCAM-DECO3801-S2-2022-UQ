@@ -57,9 +57,18 @@ class _LeaderboardBodyState extends State<LeaderboardBody> {
                     style: TextStyle(fontSize: 30, color: Colors.white)),
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: const [
-                  Text("Clay"),
-                  Text("500"),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text("Clay",
+                      style: TextStyle(fontSize: 24, color: Colors.white)),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text("500",
+                        style: TextStyle(fontSize: 24, color: Colors.white)),
+                  ),
                 ],
               ),
             ],
