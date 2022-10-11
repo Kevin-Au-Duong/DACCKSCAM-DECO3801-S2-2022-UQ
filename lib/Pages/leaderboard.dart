@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../Helper/globals.dart';
+
 class Leaderboard extends StatelessWidget {
   const Leaderboard({super.key});
   @override
@@ -54,7 +56,7 @@ class _LeaderboardBodyState extends State<LeaderboardBody> {
               const Padding(
                 padding: EdgeInsets.all(15.0),
                 child: Text("Leaderboard",
-                    style: TextStyle(fontSize: 30, color: Colors.white)),
+                    style: headings),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
