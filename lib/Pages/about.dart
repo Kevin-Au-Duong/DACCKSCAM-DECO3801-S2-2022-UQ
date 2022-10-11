@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Violations extends StatelessWidget {
-  const Violations({super.key});
+class Page extends StatelessWidget {
+  const Page({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,6 +10,7 @@ class Violations extends StatelessWidget {
         backgroundColor: Colors.deepPurple,
         centerTitle: true,
         elevation: 0,
+
         title: IconButton(
           padding: EdgeInsets.zero,
           icon: const Icon(Icons.home, size: 40),
@@ -28,42 +30,30 @@ class Violations extends StatelessWidget {
 
       ),
       // body: const Text("DAACKS"), backgroundColor: Colors.deepPurple,
-      body: const ViolationsBody(), backgroundColor: Colors.deepPurple,
+      body: const PageBody(), backgroundColor: Colors.deepPurple,
     );
   }
 }
 
-
-class ViolationsBody extends StatelessWidget {
-  const ViolationsBody({super.key});
+class PageBody extends StatelessWidget {
+  const PageBody({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Center(child: Container(
-        alignment: Alignment.center,
-        height: 700,
-        width: 500,
-        decoration: const BoxDecoration(
+      alignment: Alignment.center,
+      height: 700,
+      width: 500,
+      decoration: const BoxDecoration(
           color: Colors.black,
-        ),
-        child: Column(
-          children: [
-            Row(
-              children: const [
-                Padding(
-                  padding: EdgeInsets.all(15.0),
-                  child: Text("Stateless template",
-                      style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold)),
-                ),
-              ],
-            ),
-          ],
-        )
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(50), topRight: Radius.circular(50)
+          )
+      ),
+      child: const Text(
+          "Stateful template",
+          style: TextStyle(fontSize: 30, color: Colors.white)),
     ),
     );
   }
 }
-
