@@ -4,6 +4,8 @@ import 'package:frontend/Helper/read_drive_data.dart';
 import 'package:frontend/Pages/violations.dart';
 import 'package:frontend/Pages/leaderboard.dart';
 
+import '../Helper/globals.dart';
+
 final _scaffoldKey = GlobalKey<ScaffoldState>();
 
 
@@ -11,6 +13,9 @@ class Home extends StatelessWidget {
   const Home({super.key});
   @override
   Widget build(BuildContext context) {
+    DriveData defaultData = DriveData('default');
+    defaultData.parse();
+    CURRENTTRIP = TRIPS.length - 1;
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
@@ -28,7 +33,7 @@ class Home extends StatelessWidget {
               icon: const Icon(Icons.refresh, size: 40), // change this size and style
               onPressed: () {
                 DriveData defaultData = DriveData('default');
-                defaultData.getLine();
+                defaultData.parse();
               },
             )
           )
@@ -114,6 +119,7 @@ class Home extends StatelessWidget {
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.pushNamed(context, '/settings');
+
                     },
                     tileColor: Colors.deepPurpleAccent,
                   ),
@@ -130,6 +136,7 @@ class Home extends StatelessWidget {
 
 class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
+
   @override
   State<HomeBody> createState() => _HomeBodyState();
 }
@@ -137,41 +144,177 @@ class HomeBody extends StatefulWidget {
 class _HomeBodyState extends State<HomeBody> {
 
   String? name = globals.name;
-  //int numViolations = globals.violations.length;
-  int numViolations = 420;
   int leaderboardPercentile = globals.leaderboardPercentile;
   String? vehicleName = globals.vehicleName;
   String vehicleImage = globals.vehicleImage;
+
+
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 10),
-            child: Row(
+      child: RefreshIndicator(
+        onRefresh: () async {
+          _refreshData();
+          setState(() {});
+          return Future<void>.delayed(const Duration(seconds: 5));
+        },
+        child: ListView(
+          children: [
+            Column(
               children: [
-                Text(
-                  "G'day $name,",
-                  style: const TextStyle(fontSize: 30, color: Colors.white),
-                  textAlign: TextAlign.left,
-                ),
-              ],
-            ),
-          ),
-          Row(
-            children: [
-              Column(
-                children: [
-                  const Text(
-                    'Rule Violations',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: Row(
+                    children: [
+                      Text(
+                        "G'day $name,",
+                        style: const TextStyle(fontSize: 30, color: Colors.white),
+                        textAlign: TextAlign.left,
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    height: 180,
-                    width: 180,
+                ),
+                Row(
+                  children: [
+                    Column(
+                      children: [
+                        const Text(
+                          'Rule Violations',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        ),
+                        SizedBox(
+                          height: 180,
+                          width: 180,
+                          child: Card(
+                            color: Colors.white10,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            child: InkWell(
+                              splashColor: Colors.purple,
+                              borderRadius: BorderRadius.circular(30.0),
+                              onTap:() {
+                                /// Read data everytime last drive's rule violations
+                                /// is visited
+                                DriveData defaultData = DriveData('default');
+                                defaultData.parse();
+                                CURRENTTRIP = TRIPS.length - 1;
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const Violations(),
+                                  ),
+                                );
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(bottom: 16.0),
+                                child: Column(
+
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: const [
+                                          Icon(Icons.chevron_right, color: Colors.white54, size: 32,),
+                                        ],
+                                      ),
+
+                                      Text(
+                                        TRIPS[CURRENTTRIP].numViolations.toString(),
+                                        style: const TextStyle(fontSize: 70, color: Colors.white) ,
+                                      ),
+                                      const Text(
+                                        'Last Drive',
+                                        style: TextStyle(fontSize: 18, color: Colors.white) ,
+                                      )
+                                    ],
+                                ),
+                              ),
+                            )
+                          ),
+                        )
+                      ],
+                    ), // Rule violations column
+                    const Spacer(),
+                    Column(
+                      children: [
+                        const Text(
+                          'Leaderboard',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        ),
+                        SizedBox(
+                          height: 180,
+                          width: 180,
+                          child: Card(
+                              color: Colors.white10,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                              ),
+                              child: InkWell(
+                                splashColor: Colors.purple,
+                                borderRadius: BorderRadius.circular(30.0),
+                                onTap:() {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const Leaderboard(),
+                                    ),
+                                  );
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(bottom: 16.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Row(
+                                        children: const [
+                                          Padding(
+                                            padding: EdgeInsets.only(left: 16.0),
+                                            child: Text(
+                                              'Top',
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(color: Colors.white, fontSize: 18),
+                                            ),
+                                          ),
+                                          Spacer(),
+                                          Icon(Icons.chevron_right, color: Colors.white54, size: 32,),
+                                        ],
+                                      ),
+                                      Text(
+                                        '$leaderboardPercentile%',
+                                        style: const TextStyle(fontSize: 70, color: Colors.white) ,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(right: 16.0),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          children: const [
+                                            Text(
+                                              'Of Drivers',
+                                              style: TextStyle(fontSize: 18, color: Colors.white),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                          ),
+                        ),
+                      ],
+                    ), // Leaderboard column
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: SizedBox(
+                    height: 300,
+                    width: 400,
                     child: Card(
                       color: Colors.white10,
                       shape: RoundedRectangleBorder(
@@ -181,158 +324,45 @@ class _HomeBodyState extends State<HomeBody> {
                         splashColor: Colors.purple,
                         borderRadius: BorderRadius.circular(30.0),
                         onTap:() {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const Violations(),
-                            ),
-                          );
+                          //TODO: Go to rule violations page
                         },
                         child: Padding(
-                          padding: const EdgeInsets.only(bottom: 16.0),
+                          padding: const EdgeInsets.all(16.0),
                           child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: const [
-                                    Icon(Icons.chevron_right, color: Colors.white54, size: 32,),
-                                  ],
-                                ),
-                                Text(
-                                  '$numViolations',
-                                  style: const TextStyle(fontSize: 70, color: Colors.white) ,
-                                ),
-                                const Text(
-                                  'Last Drive',
-                                  style: TextStyle(fontSize: 18, color: Colors.white) ,
-                                )
-                              ],
-                          ),
-                        ),
-                      )
-                    ),
-                  )
-                ],
-              ), // Rule violations column
-              const Spacer(),
-              Column(
-                children: [
-                  const Text(
-                    'Leaderboard',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                  SizedBox(
-                    height: 180,
-                    width: 180,
-                    child: Card(
-                        color: Colors.white10,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                        child: InkWell(
-                          splashColor: Colors.purple,
-                          borderRadius: BorderRadius.circular(30.0),
-                          onTap:() {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const Leaderboard(),
-                              ),
-                            );
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(bottom: 16.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Row(
-                                  children: const [
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 16.0),
-                                      child: Text(
-                                        'Top',
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(color: Colors.white, fontSize: 18),
-                                      ),
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "$name's $vehicleName",
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
                                     ),
-                                    Spacer(),
-                                    Icon(Icons.chevron_right, color: Colors.white54, size: 32,),
-                                  ],
-                                ),
-                                Text(
-                                  '$leaderboardPercentile%',
-                                  style: const TextStyle(fontSize: 70, color: Colors.white) ,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 16.0),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: const [
-                                      Text(
-                                        'Of Drivers',
-                                        style: TextStyle(fontSize: 18, color: Colors.white),
-                                      ),
-                                    ],
                                   ),
-                                ),
-                              ],
-                            ),
+                                ],
+                              ),
+                              Image(image: AssetImage(vehicleImage), fit: BoxFit.contain),
+                            ],
                           ),
                         ),
+                      ),
                     ),
                   ),
-                ],
-              ), // Leaderboard column
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 16),
-            child: SizedBox(
-              height: 300,
-              width: 400,
-              child: Card(
-                color: Colors.white10,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-                child: InkWell(
-                  splashColor: Colors.purple,
-                  borderRadius: BorderRadius.circular(30.0),
-                  onTap:() {
-                    //TODO: Go to rule violations page
-                    print("Tapped vehicle card");
-                  },
-                  child: Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              "$name's $vehicleName",
-                              style: const TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Image(image: AssetImage(vehicleImage), fit: BoxFit.contain),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+                )
+              ],
             ),
-          )
-        ],
+          ],
+        ),
       ),
     );
+  }
+
+  _refreshData() {
+    DriveData defaultData = DriveData('default');
+    defaultData.parse();
+    CURRENTTRIP = TRIPS.length - 1;
   }
 }
 

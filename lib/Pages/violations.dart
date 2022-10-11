@@ -1,10 +1,13 @@
+
 import 'package:flutter/material.dart';
 
 import '../Helper/globals.dart';
+import '../Helper/trip.dart';
 import '../Helper/violation.dart';
 
 class Violations extends StatelessWidget {
   const Violations({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,10 +75,11 @@ List<Widget> buildRowList() {
   lines.add(title);
   Padding violationContainer;
 
-  for (Violation violation in violations) {
+  for (Violation violation in TRIPS[CURRENTTRIP].violationList) {
     var name = violation.name;
     var severity = violation.severity;
     var penalty = violation.penalty;
+    var occurrences = violation.occurrences;
     violationContainer = Padding(
       padding: const EdgeInsets.all(12.0),
       child: Container(
@@ -124,6 +128,20 @@ List<Widget> buildRowList() {
                   Text(penalty.toString(),
                     textAlign: TextAlign.left,
                     style: const TextStyle(fontSize: 20, color: Colors.red)),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 4.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text("Occurences: ",
+                      textAlign: TextAlign.left,
+                      style: violationsStyle),
+                  Text(occurrences.toString(),
+                      textAlign: TextAlign.left,
+                      style: const TextStyle(fontSize: 20, color: Colors.red)),
                 ],
               ),
             ),
