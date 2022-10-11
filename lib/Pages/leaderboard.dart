@@ -58,26 +58,48 @@ class _LeaderboardBodyState extends State<LeaderboardBody> {
                 child: Text("Leaderboard",
                     style: headings),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(name!,
-                      style: const TextStyle(fontSize: 20, color: Colors.white)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(points.toString(),
-                        style: const TextStyle(fontSize: 20, color: Colors.white)),
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: const [
+                    Text("Friend",
+                      style: headings),
+                    Text("Points",
+                      style: headings),
+                  ]
+                ),
               ),
+              Container(
+                decoration: const BoxDecoration(
+                    color: Colors.white10,
+                    borderRadius: BorderRadius.all(Radius.circular(20))
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                   children: buildLeaderboard()),
+                  //   Padding(
+                  //     padding: const EdgeInsets.all(8.0),
+                  //     child: Text(name!,
+                  //       style: const TextStyle(fontSize: 20, color: Colors.white)),
+                  //   ),
+                  //   Padding(
+                  //     padding: const EdgeInsets.all(8.0),
+                  //     child: Text(points.toString(),
+                  //         style: const TextStyle(fontSize: 20, color: Colors.white)),
+                  //   ),
+                  // ],
+                ),
             ],
         ),
     ),
     );
   }
+}
+
+List<Widget> buildLeaderboard() {
+  List<Widget> friendList = [];
+  return friendList;
 }
 
 

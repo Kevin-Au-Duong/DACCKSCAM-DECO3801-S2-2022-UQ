@@ -16,8 +16,11 @@ Violation violation1 = Violation("Stop sign", "Minor", -69);
 Violation violation2 = Violation("Speeding", "Major", -420);
 List<Violation> violations = [violation1, violation2];
 
+//Friend kevin = Friend("Kevin", 150, )
+
 const TextStyle headings = TextStyle(fontSize: 30, color: Colors.white);
 const TextStyle violationsStyle = TextStyle(fontSize: 20, color: Colors.white);
+
 
 int points = 500;
 
