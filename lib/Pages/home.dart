@@ -26,18 +26,6 @@ class Home extends StatelessWidget {
           icon: const Icon(Icons.menu, size: 40), // change this size and style
           onPressed: () => _scaffoldKey.currentState?.openDrawer(),
         ),
-        actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(right: 20.0),
-            child: IconButton(
-              icon: const Icon(Icons.refresh, size: 40), // change this size and style
-              onPressed: () {
-                DriveData defaultData = DriveData('default');
-                defaultData.parse();
-              },
-            )
-          )
-        ],
         title: const Text(
           'Home',
           style: TextStyle(
