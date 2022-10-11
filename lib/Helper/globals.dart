@@ -19,4 +19,6 @@ List<Violation> violations = [violation1, violation2];
 const TextStyle headings = TextStyle(fontSize: 30, color: Colors.white);
 const TextStyle violationsStyle = TextStyle(fontSize: 20, color: Colors.white);
 
+int points = 500;
+
 

@@ -59,21 +59,62 @@ class Home extends StatelessWidget {
                     ),
                   ),
                 ),
-                ListTile(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30)
-                  ),
-                  title: const Text(
-                      'Settings',
-                    style: TextStyle(
-                      color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)
                     ),
+                    title: const Text(
+                        'Settings',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.pushNamed(context, '/settings');
+                    },
+                    tileColor: Colors.deepPurpleAccent,
                   ),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.pushNamed(context, '/settings');
-                  },
-                  tileColor: Colors.deepPurpleAccent,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)
+                    ),
+                    title: const Text(
+                      'Driving History',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.pushNamed(context, '/settings');
+                    },
+                    tileColor: Colors.deepPurpleAccent,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)
+                    ),
+                    title: const Text(
+                      'Store',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.pushNamed(context, '/settings');
+                    },
+                    tileColor: Colors.deepPurpleAccent,
+                  ),
                 ),
               ],
             ),

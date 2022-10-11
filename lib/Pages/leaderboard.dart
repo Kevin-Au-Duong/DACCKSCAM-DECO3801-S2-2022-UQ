@@ -60,16 +60,16 @@ class _LeaderboardBodyState extends State<LeaderboardBody> {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
+                children: [
                   Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text("Clay",
-                      style: TextStyle(fontSize: 24, color: Colors.white)),
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(name!,
+                      style: const TextStyle(fontSize: 20, color: Colors.white)),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text("500",
-                        style: TextStyle(fontSize: 24, color: Colors.white)),
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(points.toString(),
+                        style: const TextStyle(fontSize: 20, color: Colors.white)),
                   ),
                 ],
               ),
