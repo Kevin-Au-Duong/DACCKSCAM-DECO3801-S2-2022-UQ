@@ -136,7 +136,7 @@ List<Widget> buildRowList() {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text("Occurences: ",
+                  const Text("Occurrences: ",
                       textAlign: TextAlign.left,
                       style: violationsStyle),
                   Text(occurrences.toString(),

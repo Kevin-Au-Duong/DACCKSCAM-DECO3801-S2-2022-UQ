@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../Helper/friend.dart';
 import '../Helper/globals.dart';
 
 class Leaderboard extends StatelessWidget {
@@ -75,8 +76,7 @@ class _LeaderboardBodyState extends State<LeaderboardBody> {
                     color: Colors.white10,
                     borderRadius: BorderRadius.all(Radius.circular(20))
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                child: Column(
                    children: buildLeaderboard()),
                   //   Padding(
                   //     padding: const EdgeInsets.all(8.0),
@@ -92,14 +92,32 @@ class _LeaderboardBodyState extends State<LeaderboardBody> {
                 ),
             ],
         ),
-    ),
+      ),
     );
   }
 }
 
 List<Widget> buildLeaderboard() {
-  List<Widget> friendList = [];
-  return friendList;
+  friends.sort((a, b) => a.points.compareTo(b.points));
+  List<Widget> lines = [];
+  for (Friend friend in friends) {
+    var row = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Spacer(),
+          Expanded(
+            child: Text(friend.name,
+              style: headings),
+          ),
+          Expanded(
+          child: Text(friend.points.toString(),
+            style: headings)
+          ),
+        ]
+    );
+    lines.add(row);
+  }
+  return lines;
 }
 
 
