@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../Helper/globals.dart';
+
 class Leaderboard extends StatelessWidget {
   const Leaderboard({super.key});
   @override
@@ -13,7 +15,7 @@ class Leaderboard extends StatelessWidget {
           padding: EdgeInsets.zero,
           icon: const Icon(Icons.home, size: 40),
           onPressed: () {
-            //Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
+            Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
           },
         ),
 
@@ -50,14 +52,29 @@ class _LeaderboardBodyState extends State<LeaderboardBody> {
           color: Colors.black,
         ),
         child: Column(
-            children: const [
-              Padding(
+            children: [
+              const Padding(
                 padding: EdgeInsets.all(15.0),
                 child: Text("Leaderboard",
-                    style: TextStyle(fontSize: 30, color: Colors.white)),
+                    style: headings),
               ),
-            ]
-        )
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(name!,
+                      style: const TextStyle(fontSize: 20, color: Colors.white)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(points.toString(),
+                        style: const TextStyle(fontSize: 20, color: Colors.white)),
+                  ),
+                ],
+              ),
+            ],
+        ),
     ),
     );
   }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/Helper/globals.dart' as globals;
+import 'package:frontend/Helper/read_drive_data.dart';
 import 'package:frontend/Pages/violations.dart';
 import 'package:frontend/Pages/leaderboard.dart';
+
 final _scaffoldKey = GlobalKey<ScaffoldState>();
 
 
@@ -22,12 +24,12 @@ class Home extends StatelessWidget {
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.only(right: 20.0),
-            child: GestureDetector(
-              onTap: () { },
-              child: const Icon(
-                Icons.refresh,
-                size: 26.0,
-              )
+            child: IconButton(
+              icon: const Icon(Icons.refresh, size: 40), // change this size and style
+              onPressed: () {
+                DriveData defaultData = DriveData('default');
+                defaultData.getLine();
+              },
             )
           )
         ],
@@ -59,21 +61,62 @@ class Home extends StatelessWidget {
                     ),
                   ),
                 ),
-                ListTile(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30)
-                  ),
-                  title: const Text(
-                      'Settings',
-                    style: TextStyle(
-                      color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)
                     ),
+                    title: const Text(
+                        'Settings',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.pushNamed(context, '/settings');
+                    },
+                    tileColor: Colors.deepPurpleAccent,
                   ),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.pushNamed(context, '/settings');
-                  },
-                  tileColor: Colors.deepPurpleAccent,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)
+                    ),
+                    title: const Text(
+                      'Driving History',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.pushNamed(context, '/settings');
+                    },
+                    tileColor: Colors.deepPurpleAccent,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)
+                    ),
+                    title: const Text(
+                      'Store',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.pushNamed(context, '/settings');
+                    },
+                    tileColor: Colors.deepPurpleAccent,
+                  ),
                 ),
               ],
             ),

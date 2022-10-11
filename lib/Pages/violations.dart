@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../Helper/globals.dart';
+import '../Helper/violation.dart';
+
 class Violations extends StatelessWidget {
   const Violations({super.key});
   @override
@@ -13,7 +16,7 @@ class Violations extends StatelessWidget {
           padding: EdgeInsets.zero,
           icon: const Icon(Icons.home, size: 40),
           onPressed: () {
-            //Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
+            Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
           },
         ),
 
@@ -42,25 +45,101 @@ class ViolationsBody extends StatefulWidget {
 class _ViolationsBodyState extends State<ViolationsBody> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Container(
-      alignment: Alignment.center,
-      height: 700,
-      width: 500,
-      decoration: const BoxDecoration(
+    return Center(
+      child: Container(
+        alignment: Alignment.center,
+        height: 700,
+        width: 500,
+        decoration: const BoxDecoration(
           color: Colors.black,
           ),
       child: Column(
-        children: const [
-        Padding(
-          padding: EdgeInsets.all(15.0),
-          child: Text("Violations",
-              textAlign: TextAlign.left,
-              style: TextStyle(fontSize: 30, color: Colors.white)),
-        ),
-      ]
+        children: buildRowList(),
       )
-    ),
+      ),
     );
   }
 }
 
+List<Widget> buildRowList() {
+  var title = const Padding(
+    padding: EdgeInsets.all(15.0),
+    child: Text("Rule Violations",
+        textAlign: TextAlign.left,
+        style: headings),
+  );
+  List<Widget> lines = [];
+  lines.add(title);
+  Padding violationContainer;
+
+  for (Violation violation in violations) {
+    var name = violation.name;
+    var severity = violation.severity;
+    var penalty = violation.penalty;
+    violationContainer = Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Container(
+        decoration: const BoxDecoration(
+            color: Colors.white10,
+            borderRadius: BorderRadius.all(Radius.circular(20))
+        ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 4.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text("Rule Violation: ",
+                      textAlign: TextAlign.left,
+                      style: violationsStyle),
+                  Text(name,
+                    textAlign: TextAlign.left,
+                    style: violationsStyle),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 4.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text("Severity: ",
+                      textAlign: TextAlign.left,
+                      style: violationsStyle),
+                  Text(severity,
+                    textAlign: TextAlign.left,
+                    style: violationsStyle),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 4.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text("Penalty: ",
+                      textAlign: TextAlign.left,
+                      style: violationsStyle),
+                  Text(penalty.toString(),
+                    textAlign: TextAlign.left,
+                    style: const TextStyle(fontSize: 20, color: Colors.red)),
+                ],
+              ),
+            ),
+          ]
+        ),
+      ),
+    );
+    //violationContainer.children.add(Text(name));
+    //violationContainer.children.add(Text(timestamp));
+    //violationContainer.children.add(Text(severity.toString()));
+
+    lines.add(violationContainer);
+    //lines.add(const Text("Cunt",
+         //textAlign: TextAlign.left,
+         //style: TextStyle(fontSize: 30, color: Colors.white)),
+    //);
+  }
+  return lines;
+}
