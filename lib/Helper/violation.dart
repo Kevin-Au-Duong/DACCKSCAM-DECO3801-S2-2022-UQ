@@ -2,8 +2,8 @@ import 'dart:core';
 
 class Violation {
   String name;
-  String timestamp;
-  int severity;
+  String severity;
+  int penalty;
 
-  Violation(this.name, this.timestamp, this.severity);
+  Violation(this.name, this.severity, this.penalty);
 }

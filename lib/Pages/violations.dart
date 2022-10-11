@@ -74,8 +74,8 @@ List<Widget> buildRowList() {
 
   for (Violation violation in violations) {
     var name = violation.name;
-    var timestamp = violation.timestamp;
     var severity = violation.severity;
+    var penalty = violation.penalty;
     violationContainer = Padding(
       padding: const EdgeInsets.all(12.0),
       child: Container(
@@ -104,10 +104,10 @@ List<Widget> buildRowList() {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text("Date and Time: ",
+                  const Text("Severity: ",
                       textAlign: TextAlign.left,
                       style: violationsStyle),
-                  Text(timestamp,
+                  Text(severity,
                     textAlign: TextAlign.left,
                     style: violationsStyle),
                 ],
@@ -118,10 +118,10 @@ List<Widget> buildRowList() {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text("Consequence: ",
+                  const Text("Penalty: ",
                       textAlign: TextAlign.left,
                       style: violationsStyle),
-                  Text(severity.toString(),
+                  Text(penalty.toString(),
                     textAlign: TextAlign.left,
                     style: const TextStyle(fontSize: 20, color: Colors.red)),
                 ],
@@ -136,10 +136,10 @@ List<Widget> buildRowList() {
     //violationContainer.children.add(Text(severity.toString()));
 
     lines.add(violationContainer);
-    // lines.add(const Text("Cunt",
-    //     textAlign: TextAlign.left,
-    //     style: TextStyle(fontSize: 30, color: Colors.white)),
-    // );
+    //lines.add(const Text("Cunt",
+         //textAlign: TextAlign.left,
+         //style: TextStyle(fontSize: 30, color: Colors.white)),
+    //);
   }
   return lines;
 }
