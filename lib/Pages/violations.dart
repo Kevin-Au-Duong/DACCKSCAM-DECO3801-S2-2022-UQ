@@ -131,15 +131,7 @@ List<Widget> buildRowList() {
         ),
       ),
     );
-    //violationContainer.children.add(Text(name));
-    //violationContainer.children.add(Text(timestamp));
-    //violationContainer.children.add(Text(severity.toString()));
-
     lines.add(violationContainer);
-    //lines.add(const Text("Cunt",
-         //textAlign: TextAlign.left,
-         //style: TextStyle(fontSize: 30, color: Colors.white)),
-    //);
   }
   return lines;
 }
