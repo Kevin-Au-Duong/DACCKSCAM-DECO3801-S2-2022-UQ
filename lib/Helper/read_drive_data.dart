@@ -1,10 +1,8 @@
 import 'dart:core';
 import 'dart:async';
-import 'dart:io';
-import 'dart:convert';
+
 import 'package:flutter/services.dart';
 
-import 'package:path_provider/path_provider.dart';
 
 class DriveData {
   String filename;
@@ -22,4 +20,18 @@ class DriveData {
   }
 
 
+  /// line element:
+  /// 0: trip start time
+  /// 1: trip end time
+  /// 2: trip duration
+  /// 3 and beyond: violation type
+  createViolations(String line) {
+    List<String> data = line.split(',');
+    int numViolations = data.length;
+    for (var i = numViolations; i >= 4; i--) {
+      //Violation violation = new Violation(name, timestamp, severity);
+    }
+
+
+  }
 }
