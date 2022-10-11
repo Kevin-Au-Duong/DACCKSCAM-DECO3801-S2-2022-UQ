@@ -325,7 +325,6 @@ class _HomeBodyState extends State<HomeBody> {
                         borderRadius: BorderRadius.circular(30.0),
                         onTap:() {
                           //TODO: Go to rule violations page
-                          print("Tapped vehicle card");
                         },
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
@@ -361,7 +360,7 @@ class _HomeBodyState extends State<HomeBody> {
   }
 
   _refreshData() {
-    DriveData defaultData = new DriveData('default');
+    DriveData defaultData = DriveData('default');
     defaultData.parse();
     CURRENTTRIP = TRIPS.length - 1;
   }
