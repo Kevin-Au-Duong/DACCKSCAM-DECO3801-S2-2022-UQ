@@ -1,7 +1,5 @@
 library frontend.globals;
 
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:frontend/Helper/violation.dart';
 
@@ -19,5 +17,6 @@ Violation violation2 = Violation("Speeding", "90 in 80 Zone", "10/10/2022 11:23:
 List<Violation> violations = [violation1, violation2];
 
 const TextStyle headings = TextStyle(fontSize: 30, color: Colors.white);
+const TextStyle violationsStyle = TextStyle(fontSize: 20, color: Colors.white);
 
 

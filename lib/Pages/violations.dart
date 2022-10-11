@@ -64,30 +64,72 @@ class _ViolationsBodyState extends State<ViolationsBody> {
 List<Widget> buildRowList() {
   var title = const Padding(
     padding: EdgeInsets.all(15.0),
-    child: Text("Violations",
+    child: Text("Rule Violations",
         textAlign: TextAlign.left,
         style: headings),
   );
   List<Widget> lines = [];
   lines.add(title);
-  Column violationContainer;
+  Padding violationContainer;
 
   for (Violation violation in violations) {
     var name = violation.name;
     var timestamp = violation.timestamp;
     var severity = violation.severity;
-    violationContainer = Column(
-      children: [
-        Text(name,
-          textAlign: TextAlign.left,
-          style: headings),
-        Text(timestamp,
-          textAlign: TextAlign.left,
-          style: headings),
-        Text(severity.toString(),
-          textAlign: TextAlign.left,
-          style: headings),
-      ]
+    violationContainer = Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Container(
+        decoration: const BoxDecoration(
+            color: Colors.white10,
+            borderRadius: BorderRadius.all(Radius.circular(20))
+        ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 4.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text("Rule Violation: ",
+                      textAlign: TextAlign.left,
+                      style: violationsStyle),
+                  Text(name,
+                    textAlign: TextAlign.left,
+                    style: violationsStyle),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 4.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text("Date and Time: ",
+                      textAlign: TextAlign.left,
+                      style: violationsStyle),
+                  Text(timestamp,
+                    textAlign: TextAlign.left,
+                    style: violationsStyle),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 4.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text("Consequence: ",
+                      textAlign: TextAlign.left,
+                      style: violationsStyle),
+                  Text(severity.toString(),
+                    textAlign: TextAlign.left,
+                    style: const TextStyle(fontSize: 20, color: Colors.red)),
+                ],
+              ),
+            ),
+          ]
+        ),
+      ),
     );
     //violationContainer.children.add(Text(name));
     //violationContainer.children.add(Text(timestamp));
