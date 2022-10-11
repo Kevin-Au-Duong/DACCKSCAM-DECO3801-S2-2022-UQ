@@ -110,10 +110,24 @@ List<Widget> buildRowList() {
                 children: [
                   const Text("Severity: ",
                       textAlign: TextAlign.left,
-                      style: violationsStyle),
-                  Text(severity,
-                    textAlign: TextAlign.left,
-                    style: violationsStyle),
+                      style: violationsStyle
+                  ),
+                  if (severity == 'Minor') ...[
+                    Text(severity,
+                        textAlign: TextAlign.left,
+                        style: minorViolationsStyle
+                    ),
+                  ] else if (severity == 'Major') ...[
+                    Text(severity,
+                        textAlign: TextAlign.left,
+                        style: majorViolationsStyle
+                    ),
+                  ] else if (severity == 'Fatally Serious') ...[
+                    Text(severity,
+                        textAlign: TextAlign.left,
+                        style: fatallySeriousViolationsStyle
+                    ),
+                  ]
                 ],
               ),
             ),
