@@ -29,6 +29,10 @@ List<Friend> friends = [kevin, adriene, clay, chuxue, sanya, david];
 
 const TextStyle headings = TextStyle(fontSize: 30, color: Colors.white);
 const TextStyle violationsStyle = TextStyle(fontSize: 20, color: Colors.white);
+const TextStyle minorViolationsStyle = TextStyle(fontSize: 20, color: Colors.lightGreen);
+const TextStyle majorViolationsStyle = TextStyle(fontSize: 20, color: Colors.yellow);
+const TextStyle fatallySeriousViolationsStyle = TextStyle(fontSize: 20, color: Colors.red);
+
 
 int points = 500;
 
