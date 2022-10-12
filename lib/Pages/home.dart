@@ -106,8 +106,7 @@ class Home extends StatelessWidget {
                     ),
                     onTap: () {
                       Navigator.pop(context);
-                      Navigator.pushNamed(context, '/settings');
-
+                      Navigator.pushNamed(context, '/store');
                     },
                     tileColor: Colors.deepPurpleAccent,
                   ),

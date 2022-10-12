@@ -6,6 +6,8 @@ import 'package:frontend/Pages/home.dart';
 import 'package:frontend/Pages/settings.dart';
 import 'package:frontend/Pages/violations.dart';
 
+import 'Pages/store.dart';
+
 
 void main() {
   runApp(MaterialApp(
@@ -15,6 +17,7 @@ void main() {
       '/home': (context) => const Home(),
       '/settings': (context) => const Settings(),
       '/leaderboard' : (context) => const Leaderboard(),
+      '/store' : (context) => const Store(),
     },
   ));
 }
