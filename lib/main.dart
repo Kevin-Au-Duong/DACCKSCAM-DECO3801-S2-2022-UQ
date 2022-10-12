@@ -14,6 +14,7 @@ void main() {
       '/login': (context) => const Login(),
       '/home': (context) => const Home(),
       '/settings': (context) => const Settings(),
+      '/leaderboard' : (context) => const Leaderboard(),
     },
   ));
 }

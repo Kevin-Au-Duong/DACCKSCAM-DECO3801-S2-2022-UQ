@@ -90,6 +90,17 @@ class _LeaderboardBodyState extends State<LeaderboardBody> {
                   //   ),
                   // ],
                 ),
+              const Spacer(),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Text("Congratulations! Your score of $points this week puts you in the top 69% of all drivers using our platform. Keep driving safely to increase your rank and earn more K-dollars!",
+                        style: violationsStyle),
+                  ]
+                ),
+              ),
+              const Spacer(),
             ],
         ),
       ),
@@ -101,6 +112,13 @@ List<Widget> buildLeaderboard() {
   friends.sort((a, b) => b.points.compareTo(a.points));
   List<Widget> lines = [];
   for (Friend friend in friends) {
+    TextStyle style;
+    if (friend == user) {
+      style = const TextStyle(fontSize: 30, color: Colors.red);
+    }
+    else {
+      style = headings;
+    }
     var row = Padding(
       padding: const EdgeInsets.fromLTRB(16, 4, 16, 4),
       child: Row(
@@ -112,12 +130,12 @@ List<Widget> buildLeaderboard() {
                   child: Image(image: AssetImage(friend.avatarPath), height:28, width: 35, fit: BoxFit.contain),
                 ),
                 Text(friend.name,
-                  style: headings),
+                  style: style),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             Text(friend.points.toString(),
-              style: headings)
+              style: const TextStyle(fontSize: 30, color: Colors.deepPurpleAccent))
           ]
       ),
     );
