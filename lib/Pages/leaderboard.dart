@@ -59,18 +59,18 @@ class _LeaderboardBodyState extends State<LeaderboardBody> {
                 child: Text("Leaderboard",
                     style: headings),
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const [
-                    Text("Friend",
-                      style: headings),
-                    Text("Points",
-                      style: headings),
-                  ]
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 12),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //     children: const [
+              //       Text("Friend",
+              //         style: headings),
+              //       Text("Points",
+              //         style: headings),
+              //     ]
+              //   ),
+              // ),
               Container(
                 decoration: const BoxDecoration(
                     color: Colors.white10,
@@ -98,22 +98,28 @@ class _LeaderboardBodyState extends State<LeaderboardBody> {
 }
 
 List<Widget> buildLeaderboard() {
-  friends.sort((a, b) => a.points.compareTo(b.points));
+  friends.sort((a, b) => b.points.compareTo(a.points));
   List<Widget> lines = [];
   for (Friend friend in friends) {
-    var row = Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        const Spacer(),
-          Expanded(
-            child: Text(friend.name,
-              style: headings),
-          ),
-          Expanded(
-          child: Text(friend.points.toString(),
-            style: headings)
-          ),
-        ]
+    var row = Padding(
+      padding: const EdgeInsets.fromLTRB(16, 4, 16, 4),
+      child: Row(
+        children: [
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Image(image: AssetImage(friend.avatarPath), height:28, width: 35, fit: BoxFit.contain),
+                ),
+                Text(friend.name,
+                  style: headings),
+              ],
+            ),
+            Spacer(),
+            Text(friend.points.toString(),
+              style: headings)
+          ]
+      ),
     );
     lines.add(row);
   }

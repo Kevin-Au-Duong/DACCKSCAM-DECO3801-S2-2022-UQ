@@ -6,7 +6,7 @@ import 'package:frontend/Helper/violation.dart';
 
 import 'friend.dart';
 
-String? name = 'K-dawg';
+String name = 'K-dawg';
 
 int leaderboardPercentile = 69;
 
@@ -18,14 +18,17 @@ List<Trip> TRIPS = [];
 
 int CURRENTTRIP = -1;
 
-Friend kevin = Friend("Kevin", 150, "assets/kia sportage icon.png");
+int points = 350;
+
 Friend adriene = Friend("Adriene", 75, "assets/ferrari icon.jpg");
 Friend clay = Friend("Clay", 500, "assets/old ute icon.jpg");
 Friend chuxue = Friend("Chuxue", -50, "assets/bmw sedan icon.jpg");
 Friend sanya = Friend("Sanya", 50, "assets/lambo icon.jpg");
 Friend david = Friend("David", 400, "assets/suv icon.jpg");
+Friend user = Friend(name, points, "assets/kia sportage icon.png");
 
-List<Friend> friends = [kevin, adriene, clay, chuxue, sanya, david];
+
+List<Friend> friends = [user, adriene, clay, chuxue, sanya, david];
 
 const TextStyle headings = TextStyle(fontSize: 30, color: Colors.white);
 const TextStyle violationsStyle = TextStyle(fontSize: 20, color: Colors.white);
@@ -34,7 +37,6 @@ const TextStyle majorViolationsStyle = TextStyle(fontSize: 20, color: Colors.yel
 const TextStyle fatallySeriousViolationsStyle = TextStyle(fontSize: 20, color: Colors.red);
 
 
-int points = 500;
 
 Map<String, String> severityMapping = {
   'Stop Sign': 'Minor',

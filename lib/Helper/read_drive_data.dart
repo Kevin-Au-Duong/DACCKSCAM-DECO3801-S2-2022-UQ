@@ -12,7 +12,6 @@ class DriveData {
     List<String> lines = await getLine();
     for (int tripNum = 0; tripNum < lines.length; tripNum++) {
       TRIPS.add(createTrip(lines[tripNum], tripNum));
-
     }
     return lines;
   }
