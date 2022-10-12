@@ -1,9 +1,14 @@
 import 'dart:core';
 
-class Violation {
-  String name;
-  String timestamp;
-  int severity;
+import 'package:frontend/Helper/violation.dart';
 
-  Violation(this.name, this.timestamp, this.severity);
+class Trip {
+  String name;
+  int tripNum;
+  String startTime;
+  String endTime;
+  List<Violation> violationList;
+  int numViolations;
+
+  Trip(this.name, this.tripNum, this.startTime, this.endTime, this.violationList, this.numViolations);
 }

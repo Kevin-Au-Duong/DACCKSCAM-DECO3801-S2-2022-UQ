@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../Helper/friend.dart';
 import '../Helper/globals.dart';
 
 class Leaderboard extends StatelessWidget {
@@ -58,26 +59,71 @@ class _LeaderboardBodyState extends State<LeaderboardBody> {
                 child: Text("Leaderboard",
                     style: headings),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(name!,
-                      style: const TextStyle(fontSize: 20, color: Colors.white)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(points.toString(),
-                        style: const TextStyle(fontSize: 20, color: Colors.white)),
-                  ),
-                ],
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 12),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //     children: const [
+              //       Text("Friend",
+              //         style: headings),
+              //       Text("Points",
+              //         style: headings),
+              //     ]
+              //   ),
+              // ),
+              Container(
+                decoration: const BoxDecoration(
+                    color: Colors.white10,
+                    borderRadius: BorderRadius.all(Radius.circular(20))
+                ),
+                child: Column(
+                   children: buildLeaderboard()),
+                  //   Padding(
+                  //     padding: const EdgeInsets.all(8.0),
+                  //     child: Text(name!,
+                  //       style: const TextStyle(fontSize: 20, color: Colors.white)),
+                  //   ),
+                  //   Padding(
+                  //     padding: const EdgeInsets.all(8.0),
+                  //     child: Text(points.toString(),
+                  //         style: const TextStyle(fontSize: 20, color: Colors.white)),
+                  //   ),
+                  // ],
+                ),
             ],
         ),
-    ),
+      ),
     );
   }
+}
+
+List<Widget> buildLeaderboard() {
+  friends.sort((a, b) => b.points.compareTo(a.points));
+  List<Widget> lines = [];
+  for (Friend friend in friends) {
+    var row = Padding(
+      padding: const EdgeInsets.fromLTRB(16, 4, 16, 4),
+      child: Row(
+        children: [
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Image(image: AssetImage(friend.avatarPath), height:28, width: 35, fit: BoxFit.contain),
+                ),
+                Text(friend.name,
+                  style: headings),
+              ],
+            ),
+            Spacer(),
+            Text(friend.points.toString(),
+              style: headings)
+          ]
+      ),
+    );
+    lines.add(row);
+  }
+  return lines;
 }
 
 

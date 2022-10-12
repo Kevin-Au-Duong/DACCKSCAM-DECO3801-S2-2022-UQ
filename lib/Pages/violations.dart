@@ -1,10 +1,13 @@
+
 import 'package:flutter/material.dart';
 
 import '../Helper/globals.dart';
+import '../Helper/trip.dart';
 import '../Helper/violation.dart';
 
 class Violations extends StatelessWidget {
   const Violations({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,10 +75,11 @@ List<Widget> buildRowList() {
   lines.add(title);
   Padding violationContainer;
 
-  for (Violation violation in violations) {
+  for (Violation violation in TRIPS[CURRENTTRIP].violationList) {
     var name = violation.name;
     var severity = violation.severity;
     var penalty = violation.penalty;
+    var occurrences = violation.occurrences;
     violationContainer = Padding(
       padding: const EdgeInsets.all(12.0),
       child: Container(
@@ -106,10 +110,24 @@ List<Widget> buildRowList() {
                 children: [
                   const Text("Severity: ",
                       textAlign: TextAlign.left,
-                      style: violationsStyle),
-                  Text(severity,
-                    textAlign: TextAlign.left,
-                    style: violationsStyle),
+                      style: violationsStyle
+                  ),
+                  if (severity == 'Minor') ...[
+                    Text(severity,
+                        textAlign: TextAlign.left,
+                        style: minorViolationsStyle
+                    ),
+                  ] else if (severity == 'Major') ...[
+                    Text(severity,
+                        textAlign: TextAlign.left,
+                        style: majorViolationsStyle
+                    ),
+                  ] else if (severity == 'Fatally Serious') ...[
+                    Text(severity,
+                        textAlign: TextAlign.left,
+                        style: fatallySeriousViolationsStyle
+                    ),
+                  ]
                 ],
               ),
             ),
@@ -123,7 +141,21 @@ List<Widget> buildRowList() {
                       style: violationsStyle),
                   Text(penalty.toString(),
                     textAlign: TextAlign.left,
-                    style: const TextStyle(fontSize: 20, color: Colors.red)),
+                    style: const TextStyle(fontSize: 20, color: Colors.deepPurpleAccent)),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 4.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text("Occurrences: ",
+                      textAlign: TextAlign.left,
+                      style: violationsStyle),
+                  Text(occurrences.toString(),
+                      textAlign: TextAlign.left,
+                      style: const TextStyle(fontSize: 20, color: Colors.deepPurpleAccent)),
                 ],
               ),
             ),
@@ -131,15 +163,7 @@ List<Widget> buildRowList() {
         ),
       ),
     );
-    //violationContainer.children.add(Text(name));
-    //violationContainer.children.add(Text(timestamp));
-    //violationContainer.children.add(Text(severity.toString()));
-
     lines.add(violationContainer);
-    //lines.add(const Text("Cunt",
-         //textAlign: TextAlign.left,
-         //style: TextStyle(fontSize: 30, color: Colors.white)),
-    //);
   }
   return lines;
 }

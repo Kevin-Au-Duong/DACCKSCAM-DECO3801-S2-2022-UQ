@@ -10,7 +10,6 @@ class Login extends StatelessWidget {
     double unitHeightValue = MediaQuery.of(context).size.height * 0.01;
     return Scaffold(
       appBar: AppBar(
-
         title: const Text('Login'),
         centerTitle: true,
         backgroundColor: Colors.deepPurple,
