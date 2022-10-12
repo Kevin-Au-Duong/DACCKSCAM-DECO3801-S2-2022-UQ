@@ -12,11 +12,14 @@ int leaderboardPercentile = 69;
 
 String? vehicleName = 'Kia Sportage';
 String vehicleImage = 'assets/KiaSportage2015.png';
+List<Violation> emptyList = [];
 
-List<Trip> TRIPS = [];
+Trip placeholderTrip = Trip('Placeholder', 0, '0', '0', emptyList, 0);
+
+List<Trip> TRIPS = [placeholderTrip];
 
 
-int CURRENTTRIP = -1;
+int CURRENTTRIP = 0;
 
 int points = 350;
 

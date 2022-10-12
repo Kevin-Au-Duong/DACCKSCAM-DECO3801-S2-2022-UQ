@@ -16,6 +16,7 @@ class Home extends StatelessWidget {
     DriveData defaultData = DriveData('default');
     defaultData.parse();
     CURRENTTRIP = TRIPS.length - 1;
+
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
@@ -136,18 +137,18 @@ class _HomeBodyState extends State<HomeBody> {
   String? vehicleName = globals.vehicleName;
   String vehicleImage = globals.vehicleImage;
 
-
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: RefreshIndicator(
         onRefresh: () async {
-          _refreshData();
+
+          await _refreshData();
           setState(() {});
-          return Future<void>.delayed(const Duration(seconds: 5));
+          //return Future<void>.delayed(const Duration(seconds: 1));
         },
+
         child: ListView(
           children: [
             Column(
@@ -183,12 +184,9 @@ class _HomeBodyState extends State<HomeBody> {
                             child: InkWell(
                               splashColor: Colors.purple,
                               borderRadius: BorderRadius.circular(30.0),
-                              onTap:() {
+                              onTap:() async {
                                 /// Read data everytime last drive's rule violations
                                 /// is visited
-                                DriveData defaultData = DriveData('default');
-                                defaultData.parse();
-                                CURRENTTRIP = TRIPS.length - 1;
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -347,9 +345,10 @@ class _HomeBodyState extends State<HomeBody> {
     );
   }
 
-  _refreshData() {
+  _refreshData() async {
     DriveData defaultData = DriveData('default');
-    defaultData.parse();
+    //Future<String> lines = defaultData.parse();
+    await defaultData.parse();
     CURRENTTRIP = TRIPS.length - 1;
   }
 }
