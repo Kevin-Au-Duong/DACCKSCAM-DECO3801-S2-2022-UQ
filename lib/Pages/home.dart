@@ -107,8 +107,7 @@ class Home extends StatelessWidget {
                     ),
                     onTap: () {
                       Navigator.pop(context);
-                      Navigator.pushNamed(context, '/settings');
-
+                      Navigator.pushNamed(context, '/store');
                     },
                     tileColor: Colors.deepPurpleAccent,
                   ),
@@ -299,7 +298,7 @@ class _HomeBodyState extends State<HomeBody> {
                 Padding(
                   padding: const EdgeInsets.only(top: 16),
                   child: SizedBox(
-                    height: 300,
+                    height: 301,
                     width: 400,
                     child: Card(
                       color: Colors.white10,
