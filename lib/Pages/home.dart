@@ -176,8 +176,8 @@ class _HomeBodyState extends State<HomeBody> {
                             style: TextStyle(fontSize: 20, color: Colors.white),
                           ),
                           SizedBox(
-                            height: 180,
-                            width: 180,
+                            height: 200,
+                            width: 200,
                             child: Card(
                                 color: Colors.white10,
                                 shape: RoundedRectangleBorder(
@@ -237,8 +237,8 @@ class _HomeBodyState extends State<HomeBody> {
                             style: TextStyle(fontSize: 20, color: Colors.white),
                           ),
                           SizedBox(
-                            height: 180,
-                            width: 180,
+                            height: 200,
+                            width: 200,
                             child: Card(
                               color: Colors.white10,
                               shape: RoundedRectangleBorder(
@@ -316,7 +316,8 @@ class _HomeBodyState extends State<HomeBody> {
                         splashColor: Colors.purple,
                         borderRadius: BorderRadius.circular(30.0),
                         onTap:() {
-                          //TODO: Go to rule violations page
+                          Navigator.pop(context);
+                          Navigator.pushNamed(context, '/store');
                         },
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
@@ -342,7 +343,28 @@ class _HomeBodyState extends State<HomeBody> {
                       ),
                     ),
                   ),
-                )
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: SizedBox(
+                    height: 300,
+                    width: 480,
+                    child: Card(
+                      color: Colors.white10,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      child: InkWell(
+                        splashColor: Colors.purple,
+                        borderRadius: BorderRadius.circular(30.0),
+                        onTap:() {
+                          Navigator.pop(context);
+                          Navigator.pushNamed(context, '/store');
+                        },
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ],

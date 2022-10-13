@@ -90,12 +90,11 @@ class _LeaderboardBodyState extends State<LeaderboardBody> {
                   //   ),
                   // ],
                 ),
-              const Spacer(),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.fromLTRB(8.0, 20, 8, 8),
                 child: Column(
                   children: [
-                    Text("Congratulations! Your score of $points this week puts you in the top 69% of all drivers using our platform. Keep driving safely to increase your rank and earn more K-dollars!",
+                    Text("Congratulations! Your score of $points this week puts you in the top 69% of all drivers using our platform. Keep driving safely to increase your rank and earn more DACCK\$",
                         style: violationsStyle),
                   ]
                 ),
