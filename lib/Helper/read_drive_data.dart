@@ -1,7 +1,8 @@
 import 'dart:core';
-import 'package:flutter/services.dart';
+import 'dart:io';
 import 'package:frontend/Helper/trip.dart';
 import 'package:frontend/Helper/violation.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'globals.dart';
 
 class DriveData {
@@ -13,6 +14,7 @@ class DriveData {
     for (int tripNum = 0; tripNum < lines.length; tripNum++) {
       TRIPS.add(createTrip(lines[tripNum], tripNum));
     }
+    //return lines;
   }
 
   getLine() async {
@@ -23,7 +25,25 @@ class DriveData {
   }
 
   Future<String> read() async {
-    return await rootBundle.loadString("assets/drive_data/$filename.txt");
+    const permission = Permission.storage;
+    Map<Permission, PermissionStatus> statuses = await [
+      Permission.manageExternalStorage ,
+      Permission.storage,
+    ].request();
+
+    if (statuses != PermissionStatus.granted) {
+      await permission.request();
+      if(await permission.status.isGranted){
+        //String directory = '/storage/emulated/0/Android/data/com.DACCKS.DACCKSCam/files/save.txt';
+        String directory = '/storage/emulated/0/Documents/DACCKSCAM/save.txt';
+        ///perform other stuff to download file
+      } else {
+        await permission.request();
+      }
+    }
+    //String directory = '/storage/emulated/0/Android/data/com.DACCKS.DACCKSCam/files/save.txt';
+    String directory = '/storage/emulated/0/Documents/DACCKSCAM/save.txt';
+    return File(directory).readAsStringSync();
   }
 
   /// line element:
