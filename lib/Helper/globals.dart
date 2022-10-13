@@ -33,6 +33,9 @@ Friend user = Friend(name, points, "assets/kia sportage icon.png");
 
 List<Friend> friends = [user, adriene, clay, chuxue, sanya, david];
 
+const Icon leftArrow = Icon(Icons.arrow_left_outlined, color: Colors.deepPurpleAccent);
+const Icon rightArrow = Icon(Icons.arrow_right_outlined, color: Colors.deepPurpleAccent);
+
 const TextStyle headings = TextStyle(fontSize: 30, color: Colors.white);
 const TextStyle violationsStyle = TextStyle(fontSize: 20, color: Colors.white);
 const TextStyle minorViolationsStyle = TextStyle(fontSize: 20, color: Colors.lightGreen);

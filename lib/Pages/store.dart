@@ -52,10 +52,10 @@ class StoreBody extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 16.0),
+            padding: const EdgeInsets.only(top: 20.0),
             child: SizedBox(
               height: 60,
-              width: 360,
+              width: 480,
               child: Card(
                 color: Colors.white10,
                 shape: RoundedRectangleBorder(
@@ -64,84 +64,105 @@ class StoreBody extends StatelessWidget {
                 child: Row(
                   children: [
                     const Spacer(),
-                    const Text("Available funds: ", style: headings),
+                    const Text("Available DACKK\$: ", style: headings),
                     const Spacer(),
-                    Text("\$$points", style: headings),
+                    Text("$points", style: headings),
                     const Spacer(),
                   ],
                 ),
               ),
             ),
           ),
-          const Spacer(),
-          SizedBox(
-            height: 274,
-            width: 360,
-            child: Card(
-              color: Colors.white10,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-              child: InkWell(
-                splashColor: Colors.purple,
-                borderRadius: BorderRadius.circular(30.0),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "$vehicleName",
-                            style: const TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+          Padding(
+            padding: const EdgeInsets.only(top: 20.0),
+            child: SizedBox(
+              height: 361,
+              width: 480,
+              child: Card(
+                color: Colors.white10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                child: InkWell(
+                  splashColor: Colors.purple,
+                  borderRadius: BorderRadius.circular(30.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              "$vehicleName",
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      Image(image: AssetImage(vehicleImage), fit: BoxFit.contain),
-                    ],
+                          ],
+                        ),
+                        Image(image: AssetImage(vehicleImage), fit: BoxFit.contain),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
           ),
-          const Spacer(),
-          SizedBox(
-            height: 60,
-            width: 120,
-            child: Card(
-              color: Colors.white10,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-              child: Row(
-                children: const [
-                  Spacer(),
-                  Text("\$15", style: headings),
-                  Spacer(),
-                ],
+          Padding(
+            padding: const EdgeInsets.only(top: 20.0),
+            child: SizedBox(
+              height: 60,
+              width: 120,
+              child: Card(
+                color: Colors.white10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                child: Row(
+                  children: const [
+                    Spacer(),
+                    Icon(Icons.car_rental_sharp, size: 30, color: Colors.deepPurpleAccent),
+                    Text("15", style: headings),
+                    Spacer(),
+                  ],
+                ),
               ),
             ),
           ),
-          const Spacer(),
-          SizedBox(
-            height: 60,
-            width: 270,
-            child: Card(
-              color: Colors.white10,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-              child: Row(
-                children: const [
-                  Spacer(),
-                  Text("Buy Now", style: headings),
-                  Spacer(),
-                ],
+          Padding(
+            padding: const EdgeInsets.only(top: 20.0),
+            child: SizedBox(
+              height: 60,
+              width: 280,
+              child: Card(
+                color: Colors.white10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                child: Row(
+                  children: [
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      icon: leftArrow,
+                      iconSize: 55,
+                      onPressed: () {print("Left");},
+                    ),
+                    const Spacer(),
+                    TextButton(
+                      child: const Text("Buy Now", style: headings),
+                      onPressed: () {print("Buy");},),
+                    const Spacer(),
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      icon: rightArrow,
+                      iconSize: 55,
+                      onPressed: () {print("Right");},
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
