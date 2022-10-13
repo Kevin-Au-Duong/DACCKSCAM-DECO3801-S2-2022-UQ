@@ -74,6 +74,10 @@ List<Widget> buildRowList() {
   List<Widget> lines = [];
   lines.add(title);
   Padding violationContainer;
+  if (TRIPS[CURRENTTRIP].violationList.isEmpty) {
+    lines.add(const Text("Congratulations, you had no rule violations on your last trip! Keep up the great work.",
+      style: violationsStyle));
+  }
 
   for (Violation violation in TRIPS[CURRENTTRIP].violationList) {
     var name = violation.name;
