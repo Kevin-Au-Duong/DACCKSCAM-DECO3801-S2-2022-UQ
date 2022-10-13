@@ -34,7 +34,7 @@ class Violations extends StatelessWidget {
 
       ),
       // body: const Text("DAACKS"), backgroundColor: Colors.deepPurple,
-      body: const ViolationsBody(), backgroundColor: Colors.deepPurple,
+      body: const ViolationsBody(), backgroundColor: Colors.black,
     );
   }
 }
@@ -51,7 +51,7 @@ class _ViolationsBodyState extends State<ViolationsBody> {
     return Center(
       child: Container(
         alignment: Alignment.center,
-        height: 700,
+        //height: 700,
         width: 500,
         decoration: const BoxDecoration(
           color: Colors.black,

@@ -31,7 +31,7 @@ class Leaderboard extends StatelessWidget {
 
       ),
       // body: const Text("DAACKS"), backgroundColor: Colors.deepPurple,
-      body: const LeaderboardBody(), backgroundColor: Colors.deepPurple,
+      body: const LeaderboardBody(), backgroundColor: Colors.black,
     );
   }
 }
@@ -47,7 +47,7 @@ class _LeaderboardBodyState extends State<LeaderboardBody> {
   Widget build(BuildContext context) {
     return Center(child: Container(
         alignment: Alignment.center,
-        height: 700,
+        //height: 700,
         width: 500,
         decoration: const BoxDecoration(
           color: Colors.black,

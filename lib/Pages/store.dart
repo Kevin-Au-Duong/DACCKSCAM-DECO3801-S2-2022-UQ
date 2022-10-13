@@ -32,7 +32,7 @@ class Store extends StatelessWidget {
 
       ),
       // body: const Text("DAACKS"), backgroundColor: Colors.deepPurple,
-      body: const StoreBody(), backgroundColor: Colors.deepPurple,
+      body: const StoreBody(), backgroundColor: Colors.black,
     );
   }
 }
@@ -44,7 +44,7 @@ class StoreBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(child: Container(
       alignment: Alignment.center,
-      height: 700,
+      //height: 700,
       width: 500,
       decoration: const BoxDecoration(
           color: Colors.black,
