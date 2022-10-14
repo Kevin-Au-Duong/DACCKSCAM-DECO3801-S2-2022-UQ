@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../Helper/globals.dart';
+import '../Helper/store_item.dart';
 
 class Store extends StatelessWidget {
   const Store({super.key});
@@ -37,8 +38,79 @@ class Store extends StatelessWidget {
   }
 }
 
-class StoreBody extends StatelessWidget {
+class StoreBody extends StatefulWidget {
   const StoreBody({super.key});
+
+  @override
+  State<StoreBody> createState() => _StoreBodyState();
+}
+
+class _StoreBodyState extends State<StoreBody> {
+  // const StoreBody({super.key});
+  StoreItem current = STORE[0];
+  int points = totalPoints;
+  int length = STORE.length;
+  int pointer = 0;
+
+  void _showDialog() {
+    showDialog(
+      context: context, barrierDismissible: false,
+      builder: (BuildContext context) {
+        if (totalPoints < current.price) {
+          return AlertDialog(
+            title: const Text("Insufficient Funds!"),
+              // content: SingleChildScrollView(
+              //   child: ListBody(
+              //     children: const [
+              //       Text('This is a Dialog Box. Click OK to Close.'),
+              //     ],
+              //   ),
+              // ),
+            actions: [
+              ElevatedButton(
+                child: const Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        }
+        else {
+          return AlertDialog(
+            title: const Text("Are you sure?"),
+            // content: SingleChildScrollView(
+            //   child: ListBody(
+            //     children: const [
+            //       Text('This is a Dialog Box. Click OK to Close.'),
+            //     ],
+            //   ),
+            // ),
+            actions: [
+              ElevatedButton(
+                child: const Text('OK'),
+                onPressed: () {
+                  setState(() {
+                    totalPoints -= current.price;
+                    points = totalPoints;
+                    vehicleImage = current.picturePath;
+                    vehicleName = current.name;
+                  });
+                  Navigator.of(context).pop();
+                },
+              ),
+              ElevatedButton(
+                child: const Text('No thanks'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        }
+        }
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +138,7 @@ class StoreBody extends StatelessWidget {
                     const Spacer(),
                     const Text("Available DACKK\$: ", style: headings),
                     const Spacer(),
-                    Text("$points", style: headings),
+                    Text(points.toString(), style: headings),
                     const Spacer(),
                   ],
                 ),
@@ -94,7 +166,7 @@ class StoreBody extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Text(
-                              "$vehicleName",
+                              current.name,
                               style: const TextStyle(
                                 fontSize: 18,
                                 color: Colors.white,
@@ -103,7 +175,7 @@ class StoreBody extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Image(image: AssetImage(vehicleImage), fit: BoxFit.contain),
+                        Image(image: AssetImage(current.picturePath), fit: BoxFit.contain),
                       ],
                     ),
                   ),
@@ -122,11 +194,11 @@ class StoreBody extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30.0),
                 ),
                 child: Row(
-                  children: const [
-                    Spacer(),
-                    Icon(Icons.car_rental_sharp, size: 30, color: Colors.deepPurpleAccent),
-                    Text("15", style: headings),
-                    Spacer(),
+                  children: [
+                    const Spacer(),
+                    const Icon(Icons.car_rental_sharp, size: 30, color: Colors.deepPurpleAccent),
+                    Text(current.price.toString(), style: headings),
+                    const Spacer(),
                   ],
                 ),
               ),
@@ -148,18 +220,39 @@ class StoreBody extends StatelessWidget {
                       padding: EdgeInsets.zero,
                       icon: leftArrow,
                       iconSize: 55,
-                      onPressed: () {print("Left");},
+                      onPressed: () {
+                        setState(() {
+                          if (pointer == 0) {
+                            pointer = length - 1;
+                            current = STORE[pointer];
+                          }
+                          else {
+                            current = STORE[--pointer];
+                          }
+                        });
+                      },
                     ),
                     const Spacer(),
                     TextButton(
+                      onPressed: _showDialog,
                       child: const Text("Buy Now", style: headings),
-                      onPressed: () {print("Buy");},),
+                    ),
                     const Spacer(),
                     IconButton(
                       padding: EdgeInsets.zero,
                       icon: rightArrow,
                       iconSize: 55,
-                      onPressed: () {print("Right");},
+                      onPressed: () {
+                        setState(() {
+                          if (pointer < length - 1) {
+                            current = STORE[++pointer];
+                          }
+                          else {
+                            pointer = 0;
+                            current = STORE[pointer];
+                          }
+                        });
+                      },
                     ),
                   ],
                 ),
@@ -176,3 +269,4 @@ class StoreBody extends StatelessWidget {
     );
   }
 }
+

@@ -94,7 +94,7 @@ class _LeaderboardBodyState extends State<LeaderboardBody> {
                 padding: const EdgeInsets.fromLTRB(8.0, 20, 8, 8),
                 child: Column(
                   children: [
-                    Text("Congratulations! Your score of $points this week puts you in the top 69% of all drivers using our platform. Keep driving safely to increase your rank and earn more DACCK\$",
+                    Text("Congratulations! Your score of $totalPoints this week puts you in the top 69% of all drivers using our platform. Keep driving safely to increase your rank and earn more DACCK\$",
                         style: violationsStyle),
                   ]
                 ),
