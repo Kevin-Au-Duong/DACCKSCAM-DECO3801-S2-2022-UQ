@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../Helper/globals.dart';
 import '../Helper/trip.dart';
-import '../Templates/stateful_page_template.dart';
+
 
 class History extends StatelessWidget {
   const History({super.key});
@@ -97,7 +97,6 @@ List<Widget> buildRowList(BuildContext context) {
         child: InkWell(
           onTap: () {
             CURRENTTRIP = tripNumber;
-            Navigator.pop(context);
             Navigator.pushNamed(context, '/violations');
           },
           child: Column(
