@@ -114,7 +114,8 @@ class _StoreBodyState extends State<StoreBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Container(
+    return Center(
+      child: Container(
       alignment: Alignment.center,
       //height: 700,
       width: 500,
@@ -146,7 +147,7 @@ class _StoreBodyState extends State<StoreBody> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 20.0),
+            padding: const EdgeInsets.only(top: 10.0),
             child: SizedBox(
               height: 361,
               width: 480,
@@ -184,7 +185,7 @@ class _StoreBodyState extends State<StoreBody> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 20.0),
+            padding: const EdgeInsets.only(top: 10.0),
             child: SizedBox(
               height: 60,
               width: 120,
@@ -205,7 +206,7 @@ class _StoreBodyState extends State<StoreBody> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 20.0),
+            padding: const EdgeInsets.only(top: 10.0),
             child: SizedBox(
               height: 60,
               width: 280,
