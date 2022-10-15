@@ -64,6 +64,7 @@ class _ViolationsBodyState extends State<ViolationsBody> {
 }
 
 List<Widget> buildRowList() {
+  print(CURRENTTRIP);
   var title = const Padding(
     padding: EdgeInsets.all(15.0),
     child: Text("Rule Violations",
