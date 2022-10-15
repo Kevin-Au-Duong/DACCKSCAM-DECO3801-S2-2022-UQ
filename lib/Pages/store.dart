@@ -137,7 +137,7 @@ class _StoreBodyState extends State<StoreBody> {
                 child: Row(
                   children: [
                     const Spacer(),
-                    const Text("Available DACKK\$: ", style: headings),
+                    const Text("Available DAACK\$: ", style: headings),
                     const Spacer(),
                     Text(points.toString(), style: headings),
                     const Spacer(),
