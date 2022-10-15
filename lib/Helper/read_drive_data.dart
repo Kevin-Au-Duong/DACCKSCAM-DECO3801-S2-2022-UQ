@@ -11,6 +11,7 @@ class DriveData {
 
   parse() async {
     List<String> lines = await getLine();
+    TRIPS.clear();
     for (int tripNum = 0; tripNum < lines.length; tripNum++) {
       TRIPS.add(createTrip(lines[tripNum], tripNum));
     }
