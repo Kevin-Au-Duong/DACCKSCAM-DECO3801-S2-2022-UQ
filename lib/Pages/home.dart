@@ -70,12 +70,8 @@ class Home extends StatelessWidget {
                       ),
                     ),
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const History(),
-                        ),
-                      );
+                      Navigator.pop(context);
+                      Navigator.pushNamed(context, '/settings');
                     },
                     tileColor: Colors.deepPurpleAccent,
                   ),
@@ -93,8 +89,14 @@ class Home extends StatelessWidget {
                       ),
                     ),
                     onTap: () {
-                      Navigator.pop(context);
-                      Navigator.pushNamed(context, '/history');
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const History(),
+                        ),
+                      );
+
                     },
                     tileColor: Colors.deepPurpleAccent,
                   ),
@@ -211,7 +213,6 @@ class _HomeBodyState extends State<HomeBody> {
                                   onTap:() async {
                                     /// Read data everytime last drive's rule violations
                                     /// is visited
-                                    print(CURRENTTRIP);
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -233,14 +234,23 @@ class _HomeBodyState extends State<HomeBody> {
                                           ],
                                         ),
 
-                                        Text(
-                                          TRIPS[CURRENTTRIP].numViolations.toString(),
-                                          style: const TextStyle(fontSize: 70, color: Colors.white) ,
-                                        ),
+
+                                        if (CURRENTTRIP == -1) ...[
+                                          const Text(
+                                            '0',
+                                            style: TextStyle(fontSize: 70, color: Colors.white) ,
+                                          ),
+                                        ] else ...[
+                                          Text(
+                                            TRIPS[CURRENTTRIP].numViolations.toString(),
+                                            style: const TextStyle(fontSize: 70, color: Colors.white) ,
+                                          ),
+                                        ],
                                         const Text(
                                           'Last Drive',
                                           style: TextStyle(fontSize: 18, color: Colors.white) ,
-                                        )
+                                        ),
+
                                       ],
                                     ),
                                   ),
