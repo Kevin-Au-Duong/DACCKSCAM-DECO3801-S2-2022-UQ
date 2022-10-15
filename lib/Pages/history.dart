@@ -158,7 +158,7 @@ List<Widget> buildRowList() {
                     const Text("Distance travelled (km): ",
                         textAlign: TextAlign.left,
                         style: violationsStyle),
-                    Text(duration,
+                    Text(distance,
                         textAlign: TextAlign.left,
                         style: violationsStyle),
                   ],

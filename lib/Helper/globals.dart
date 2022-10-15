@@ -60,10 +60,7 @@ const TextStyle majorViolationsStyle = TextStyle(fontSize: 20, color: Colors.yel
 const TextStyle fatallySeriousViolationsStyle = TextStyle(fontSize: 20, color: Colors.red);
 const TextStyle noViolationsStyle = TextStyle(fontSize: 20, color: Colors.green);
 const TextStyle hasViolationsStyle = TextStyle(fontSize: 20, color: Colors.red);
-
-
-
-const TextStyle homeStyle = TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold);
+const TextStyle homeStyle = TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold);
 
 Map<String, String> severityMapping = {
   'Stop Sign': 'Minor',

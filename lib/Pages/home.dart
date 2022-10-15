@@ -326,7 +326,7 @@ class _HomeBodyState extends State<HomeBody> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 16),
+                  padding: const EdgeInsets.only(top: 8),
                   child: SizedBox(
                     height: 361,
                     width: 480,
@@ -388,7 +388,7 @@ class _HomeBodyState extends State<HomeBody> {
                           );
                         },
                         child: Padding(
-                          padding: const EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.fromLTRB(16.0, 8, 16, 8),
                           child: Column(
                             children: recentDrives(),
                           ),
