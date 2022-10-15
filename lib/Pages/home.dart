@@ -5,6 +5,7 @@ import 'package:frontend/Pages/violations.dart';
 import 'package:frontend/Pages/leaderboard.dart';
 
 import '../Helper/globals.dart';
+import '../Helper/trip.dart';
 
 final _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -208,6 +209,7 @@ class _HomeBodyState extends State<HomeBody> {
                                   onTap:() async {
                                     /// Read data everytime last drive's rule violations
                                     /// is visited
+                                    print(CURRENTTRIP);
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -366,7 +368,7 @@ class _HomeBodyState extends State<HomeBody> {
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0),
                   child: SizedBox(
-                    height: 300,
+                    height: 330,
                     width: 480,
                     child: Card(
                       color: Colors.white10,
@@ -380,6 +382,12 @@ class _HomeBodyState extends State<HomeBody> {
                           Navigator.pop(context);
                           Navigator.pushNamed(context, '/history');
                         },
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            children: recentDrives(),
+                          ),
+                        )
                       ),
                     ),
                   ),
@@ -398,4 +406,84 @@ class _HomeBodyState extends State<HomeBody> {
     await defaultData.parse();
     CURRENTTRIP = TRIPS.length - 1;
   }
+}
+
+List<Widget> recentDrives() {
+  List<Widget> lines = [];
+  lines.add(
+    Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: const [
+        Text(
+          "Your Recent Drives",
+          style: homeStyle,
+        ),
+      ],
+    ),
+  );
+  if (TRIPS.length <= 1) {
+    lines.add(
+      const Padding(
+        padding: EdgeInsets.only(top: 8.0),
+        child: Text("No recent drives detected. Keep driving to earn more DACKS\$ and track your progress!",
+        style: homeStyle),
+      )
+    );
+  }
+  else {
+    var actualTrips = TRIPS.sublist(1);
+    if (actualTrips.length > 3) {
+      actualTrips = actualTrips.sublist(actualTrips.length - 3);
+    }
+    for (Trip trip in actualTrips) {
+      var date = trip.startTime.split(" ")[0];
+      var distance = (trip.distance / 1000).toStringAsFixed(2);
+      var duration = trip.duration.split(".")[0];
+      var violations = trip.numViolations;
+
+      var row =
+      Padding(
+        padding: const EdgeInsets.only(top: 8.0),
+        child: Container(
+          decoration: const BoxDecoration(
+            color: Colors.white30,
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 12.0),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Text(date, style: homeStyle),
+                    const Spacer(),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(duration, style: homeStyle),
+                    const Spacer(),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(distance, style: homeStyle),
+                    const Spacer(),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(violations.toString(), style: homeStyle),
+                    const Spacer(),
+                  ],
+                ),
+              ],
+            ),
+          )
+        ),
+      );
+      lines.add(row);
+    }
+  }
+  return lines;
 }

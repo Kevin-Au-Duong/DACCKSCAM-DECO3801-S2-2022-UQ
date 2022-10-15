@@ -7,8 +7,11 @@ class Trip {
   int tripNum;
   String startTime;
   String endTime;
+  double distance;
+  String duration;
   List<Violation> violationList;
   int numViolations;
 
-  Trip(this.name, this.tripNum, this.startTime, this.endTime, this.violationList, this.numViolations);
+  Trip(this.name, this.tripNum, this.startTime, this.endTime, this.distance,
+       this.duration, this.violationList, this.numViolations);
 }

@@ -49,8 +49,9 @@ class DriveData {
   /// line element:
   /// 0: trip start time
   /// 1: trip end time
-  /// 2: trip duration
-  /// 3 and beyond: violation type
+  /// 2: trip distance
+  /// 3: trip time
+  /// 4 and beyond: violation type
   Trip createTrip(String line, int tripNum) {
     List<String> data = line.split(',');
     List<Violation> violations = <Violation>[];
@@ -73,6 +74,8 @@ class DriveData {
     String name = 'Trip $tripNum';
     String startTime = data[0];
     String endTime = data[1];
-    return Trip(name, tripNum, startTime, endTime, violations, numViolations);
+    double distance = double.parse(data[2]);
+    String duration = data[3];
+    return Trip(name, tripNum, startTime, endTime, distance, duration, violations, numViolations);
   }
 }

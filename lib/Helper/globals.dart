@@ -13,13 +13,18 @@ int leaderboardPercentile = 69;
 
 String vehicleName = 'Kia Sportage';
 String vehicleImage = 'assets/KiaSportage2015.png';
-List<Violation> emptyList = [];
 
-Trip placeholderTrip = Trip('Placeholder', 0, '0', '0', emptyList, 0);
+Trip placeholderTrip = Trip('Placeholder', 0, '0', '0', 0, "0", [], 0);
+List<Violation> violationsList1 = [Violation("Speeding", "Major", -100, 2),
+                                   Violation("Stop Sign", "Minor", -50, 1)];
+List<Violation> violationsList2 = [];
+Trip dummy1 = Trip('abc', 1, "10/11/2022 1:47:33 AM", "10/11/2022 1:47:50 AM",
+              100, "00:00:43.3193182", violationsList1, 3);
+Trip dummy2 = Trip('123', 2, "10/11/2022 1:52:13 AM", "10/11/2022 1:52:22 AM",
+              250, "00:35:09.5659543", violationsList2, 0);
 
-//Trip dummy1 = Trip()
-
-List<Trip> TRIPS = [placeholderTrip];
+//List<Trip> TRIPS = [placeholderTrip];
+List<Trip> TRIPS = [placeholderTrip, dummy2, dummy1];
 
 int CURRENTTRIP = 0;
 
@@ -52,6 +57,8 @@ const TextStyle violationsStyle = TextStyle(fontSize: 20, color: Colors.white);
 const TextStyle minorViolationsStyle = TextStyle(fontSize: 20, color: Colors.lightGreen);
 const TextStyle majorViolationsStyle = TextStyle(fontSize: 20, color: Colors.yellow);
 const TextStyle fatallySeriousViolationsStyle = TextStyle(fontSize: 20, color: Colors.red);
+
+const TextStyle homeStyle = TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold);
 
 Map<String, String> severityMapping = {
   'Stop Sign': 'Minor',
