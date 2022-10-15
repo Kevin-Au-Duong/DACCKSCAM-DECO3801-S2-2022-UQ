@@ -68,9 +68,9 @@ Map<String, String> severityMapping = {
 };
 
 Map<String, int> penaltyMapping = {
-  'Minor': -69,
-  'Major': -420,
-  'Fatally Serious': -80085,
+  'Minor': -50,
+  'Major': -100,
+  'Fatally Serious': -250,
 };
 
 
