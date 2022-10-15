@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 import '../Helper/globals.dart';
-import '../Helper/trip.dart';
 import '../Helper/violation.dart';
 
 class Violations extends StatelessWidget {
@@ -56,7 +55,7 @@ class _ViolationsBodyState extends State<ViolationsBody> {
         decoration: const BoxDecoration(
           color: Colors.black,
           ),
-      child: Column(
+      child: ListView(
         children: buildRowList(),
       )
       ),

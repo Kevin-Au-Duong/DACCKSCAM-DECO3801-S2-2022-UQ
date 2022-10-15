@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../Helper/globals.dart';
+import '../Helper/trip.dart';
+
 class History extends StatelessWidget {
   const History({super.key});
 
@@ -10,7 +13,6 @@ class History extends StatelessWidget {
         backgroundColor: Colors.deepPurple,
         centerTitle: true,
         elevation: 0,
-
         title: IconButton(
           padding: EdgeInsets.zero,
           icon: const Icon(Icons.home, size: 40),
@@ -30,25 +32,159 @@ class History extends StatelessWidget {
 
       ),
       // body: const Text("DAACKS"), backgroundColor: Colors.deepPurple,
-      body: const HistoryBody(), backgroundColor: Colors.deepPurple,
+      body: const HistoryBody(), backgroundColor: Colors.black,
     );
   }
 }
 
-class HistoryBody extends StatelessWidget {
+class HistoryBody extends StatefulWidget {
   const HistoryBody({super.key});
+  @override
+  State<HistoryBody> createState() => _HistoryBodyState();
+}
 
+class _HistoryBodyState extends State<HistoryBody> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Container(
-      alignment: Alignment.center,
-      decoration: const BoxDecoration(
-          color: Colors.black,
+    return Center(
+      child: Container(
+          alignment: Alignment.center,
+          //height: 700,
+          width: 500,
+          decoration: const BoxDecoration(
+            color: Colors.black,
+          ),
+          child: ListView(
+            children: buildRowList(),
+          )
       ),
-      child: const Text(
-          "Drive History",
-          style: TextStyle(fontSize: 30, color: Colors.white)),
-    ),
     );
   }
+}
+
+List<Widget> buildRowList() {
+  var title = const Padding(
+    padding: EdgeInsets.all(15.0),
+    child: Text("Driving History",
+        textAlign: TextAlign.left,
+        style: headings),
+  );
+  List<Widget> lines = [];
+  lines.add(title);
+  Padding violationContainer;
+  if (TRIPS.isEmpty) {
+    lines.add(const Text("You currently have no recorded driving trips. Start driving to get more driving data",
+        style: violationsStyle));
+  }
+
+  for (Trip trip in TRIPS) {
+    var name = trip.name;
+    var startTime = trip.startTime;
+    var endTime = trip.endTime;
+    var numViolations = trip.numViolations;
+    var totalTripPenalty = trip.totalTripPenalty;
+    violationContainer = Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Container(
+        decoration: const BoxDecoration(
+            color: Colors.white10,
+            borderRadius: BorderRadius.all(Radius.circular(20))
+        ),
+        child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 4.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text("Trip name: ",
+                        textAlign: TextAlign.left,
+                        style: violationsStyle),
+                    Text(name,
+                        textAlign: TextAlign.left,
+                        style: violationsStyle),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 4.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text("Start time: ",
+                        textAlign: TextAlign.left,
+                        style: violationsStyle),
+                    Text(startTime,
+                        textAlign: TextAlign.left,
+                        style: violationsStyle),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 4.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text("End time: ",
+                        textAlign: TextAlign.left,
+                        style: violationsStyle),
+                    Text(endTime,
+                        textAlign: TextAlign.left,
+                        style: violationsStyle),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 4.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text("Number of violations: ",
+                        textAlign: TextAlign.left,
+                        style: violationsStyle
+                    ),
+                    if (numViolations == 0) ...[
+                      Text(numViolations.toString(),
+                          textAlign: TextAlign.left,
+                          style: noViolationsStyle,
+                      ),
+                    ] else if (numViolations > 0) ...[
+                      Text(numViolations.toString(),
+                          textAlign: TextAlign.left,
+                          style: hasViolationsStyle
+                      ),
+                    ]
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 4.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text("Penalty: ",
+                        textAlign: TextAlign.left,
+                        style: violationsStyle
+                    ),
+                    if (totalTripPenalty == 0) ...[
+                      Text(totalTripPenalty.toString(),
+                        textAlign: TextAlign.left,
+                        style: noViolationsStyle,
+                      ),
+                    ] else if (totalTripPenalty > 0) ...[
+                      Text(totalTripPenalty.toString(),
+                          textAlign: TextAlign.left,
+                          style: hasViolationsStyle
+                      ),
+                    ]
+                  ],
+                ),
+              ),
+            ]
+        ),
+      ),
+    );
+    lines.add(violationContainer);
+  }
+  return lines;
 }

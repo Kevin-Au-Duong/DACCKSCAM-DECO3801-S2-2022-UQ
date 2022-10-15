@@ -9,6 +9,7 @@ class Trip {
   String endTime;
   List<Violation> violationList;
   int numViolations;
+  int totalTripPenalty;
 
-  Trip(this.name, this.tripNum, this.startTime, this.endTime, this.violationList, this.numViolations);
+  Trip(this.name, this.tripNum, this.startTime, this.endTime, this.violationList, this.numViolations, this.totalTripPenalty);
 }

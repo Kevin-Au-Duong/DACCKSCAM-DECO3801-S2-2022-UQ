@@ -35,7 +35,7 @@ class DriveData {
       await permission.request();
       if(await permission.status.isGranted){
         //String directory = '/storage/emulated/0/Android/data/com.DACCKS.DACCKSCam/files/save.txt';
-        String directory = '/storage/emulated/0/Documents/DACCKSCAM/save.txt';
+        //String directory = '/storage/emulated/0/Documents/DACCKSCAM/save.txt';
         ///perform other stuff to download file
       } else {
         await permission.request();
@@ -56,6 +56,7 @@ class DriveData {
     List<Violation> violations = <Violation>[];
     int numViolationsType = data.length;
     int numViolations = 0;
+    int totalTripPenalty = 0;
     
     for (var i = 4; i < numViolationsType; i++) {
       List<String> violationString = data[i].split(':');
@@ -66,6 +67,7 @@ class DriveData {
       int? basePenalty = penaltyMapping[severity];
       int totalPenalty = basePenalty! * violationOccurrences;
       numViolations += violationOccurrences;
+      totalTripPenalty += totalPenalty;
 
       violations.add(Violation(violationName, severity!, totalPenalty,
           violationOccurrences));
@@ -73,6 +75,6 @@ class DriveData {
     String name = 'Trip $tripNum';
     String startTime = data[0];
     String endTime = data[1];
-    return Trip(name, tripNum, startTime, endTime, violations, numViolations);
+    return Trip(name, tripNum, startTime, endTime, violations, numViolations, totalTripPenalty);
   }
 }

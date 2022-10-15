@@ -15,9 +15,7 @@ String vehicleName = 'Kia Sportage';
 String vehicleImage = 'assets/KiaSportage2015.png';
 List<Violation> emptyList = [];
 
-Trip placeholderTrip = Trip('Placeholder', 0, '0', '0', emptyList, 0);
-
-//Trip dummy1 = Trip()
+Trip placeholderTrip = Trip('Placeholder', 0, '0', '0', emptyList, 0, 0);
 
 List<Trip> TRIPS = [placeholderTrip];
 
@@ -30,9 +28,9 @@ Friend clay = Friend("Clay", 500, "assets/old ute icon.jpg");
 Friend chuxue = Friend("Chuxue", -50, "assets/bmw sedan icon.jpg");
 Friend sanya = Friend("Sanya", 50, "assets/lambo icon.jpg");
 Friend david = Friend("David", 400, "assets/suv icon.jpg");
-Friend user = Friend("K-Dawg", 350, "assets/KiaSportage2015.png");
+Friend user = Friend(name, totalPoints, "assets/kia sportage icon.png");
 
-List<Friend> friends = [];
+List<Friend> friends = [user, adriene, clay, chuxue, sanya, david];
 
 StoreItem kia = StoreItem("Kia Sportage", 100, "assets/KiaSportage2015.png");
 StoreItem ute = StoreItem("Vintage Ute", 50, "assets/old ute.jpg");
@@ -41,8 +39,8 @@ StoreItem ferrari = StoreItem("Ferrari", 2000, "assets/ferrari.jpg");
 StoreItem bmw = StoreItem("BMW Sedan", 500, "assets/bmw sedan.jpg");
 StoreItem suv = StoreItem("Jeep SUV", 250, "assets/suv.jpg");
 
-List<StoreItem> STORE = [kia, ute, suv, bmw, lambo, ferrari];
-
+List<StoreItem> STORE = [kia, ute, lambo, ferrari, bmw, suv];
+int storePointer = 0;
 
 const Icon leftArrow = Icon(Icons.arrow_left_outlined, color: Colors.deepPurpleAccent);
 const Icon rightArrow = Icon(Icons.arrow_right_outlined, color: Colors.deepPurpleAccent);
@@ -52,6 +50,10 @@ const TextStyle violationsStyle = TextStyle(fontSize: 20, color: Colors.white);
 const TextStyle minorViolationsStyle = TextStyle(fontSize: 20, color: Colors.lightGreen);
 const TextStyle majorViolationsStyle = TextStyle(fontSize: 20, color: Colors.yellow);
 const TextStyle fatallySeriousViolationsStyle = TextStyle(fontSize: 20, color: Colors.red);
+const TextStyle noViolationsStyle = TextStyle(fontSize: 20, color: Colors.green);
+const TextStyle hasViolationsStyle = TextStyle(fontSize: 20, color: Colors.red);
+
+
 
 Map<String, String> severityMapping = {
   'Stop Sign': 'Minor',
@@ -66,9 +68,9 @@ Map<String, String> severityMapping = {
 };
 
 Map<String, int> penaltyMapping = {
-  'Minor': -50,
-  'Major': -100,
-  'Fatally Serious': -250,
+  'Minor': -69,
+  'Major': -420,
+  'Fatally Serious': -80085,
 };
 
 
