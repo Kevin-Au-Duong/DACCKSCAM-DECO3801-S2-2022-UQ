@@ -65,6 +65,9 @@ class DriveData {
       String violationName = violationString[0];
       String violationOccurrencesString = violationString[1];
       int violationOccurrences = int.parse(violationOccurrencesString);
+      if (violationOccurrences == 0) {
+        continue;
+      }
       String? severity = severityMapping[violationName];
       int? basePenalty = penaltyMapping[severity];
       int totalPenalty = basePenalty! * violationOccurrences;
