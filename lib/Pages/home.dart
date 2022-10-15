@@ -88,7 +88,7 @@ class Home extends StatelessWidget {
                     ),
                     onTap: () {
                       Navigator.pop(context);
-                      Navigator.pushNamed(context, '/settings');
+                      Navigator.pushNamed(context, '/history');
                     },
                     tileColor: Colors.deepPurpleAccent,
                   ),
@@ -108,6 +108,25 @@ class Home extends StatelessWidget {
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.pushNamed(context, '/store');
+                    },
+                    tileColor: Colors.deepPurpleAccent,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)
+                    ),
+                    title: const Text(
+                      'Log Out',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.pushNamed(context, '/login');
                     },
                     tileColor: Colors.deepPurpleAccent,
                   ),
@@ -359,7 +378,7 @@ class _HomeBodyState extends State<HomeBody> {
                         borderRadius: BorderRadius.circular(30.0),
                         onTap:() {
                           Navigator.pop(context);
-                          Navigator.pushNamed(context, '/store');
+                          Navigator.pushNamed(context, '/history');
                         },
                       ),
                     ),

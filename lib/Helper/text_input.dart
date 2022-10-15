@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/Helper/globals.dart' as globals;
 
+import 'friend.dart';
+
 
 class TextInput extends StatefulWidget {
   const TextInput({super.key});
@@ -29,6 +31,9 @@ class _TextInput extends State<TextInput> {
               } else if (value.length > 13) {
                   return 'Please shorten your name to 12 characters at most';
               } else {
+                  globals.user = Friend(value, 350, "assets/kia sportage icon.png");
+                  globals.friends = [globals.adriene, globals.clay, globals.chuxue,
+                                          globals.david, globals.sanya, globals.user];
                   globals.name = value;
                   Navigator.pushReplacementNamed(context, '/home');
               }
