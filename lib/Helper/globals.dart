@@ -14,17 +14,18 @@ int leaderboardPercentile = 69;
 String vehicleName = 'Kia Sportage';
 String vehicleImage = 'assets/KiaSportage2015.png';
 
-Trip placeholderTrip = Trip('Placeholder', 0, '0', '0', 0, "0", [], 0);
+Trip placeholderTrip = Trip('Placeholder', 0, '0', '0', 0, "0", [], 0, 0);
 List<Violation> violationsList1 = [Violation("Speeding", "Major", -100, 2),
                                    Violation("Stop Sign", "Minor", -50, 1)];
 List<Violation> violationsList2 = [];
 Trip dummy1 = Trip('abc', 1, "10/11/2022 1:47:33 AM", "10/11/2022 1:47:50 AM",
-              100, "00:00:43.3193182", violationsList1, 3);
+              100, "00:00:43.3193182", violationsList1, 3, 250);
 Trip dummy2 = Trip('123', 2, "10/11/2022 1:52:13 AM", "10/11/2022 1:52:22 AM",
-              250, "00:35:09.5659543", violationsList2, 0);
+              250, "00:35:09.5659543", violationsList2, 0, 0);
+
+List<Trip> TRIPS = [placeholderTrip, dummy2, dummy1];
 
 //List<Trip> TRIPS = [placeholderTrip];
-List<Trip> TRIPS = [placeholderTrip, dummy2, dummy1];
 
 int CURRENTTRIP = 0;
 
@@ -35,9 +36,9 @@ Friend clay = Friend("Clay", 500, "assets/old ute icon.jpg");
 Friend chuxue = Friend("Chuxue", -50, "assets/bmw sedan icon.jpg");
 Friend sanya = Friend("Sanya", 50, "assets/lambo icon.jpg");
 Friend david = Friend("David", 400, "assets/suv icon.jpg");
-Friend user = Friend("K-Dawg", 350, "assets/KiaSportage2015.png");
+Friend user = Friend(name, totalPoints, "assets/kia sportage icon.png");
 
-List<Friend> friends = [];
+List<Friend> friends = [user, adriene, clay, chuxue, sanya, david];
 
 StoreItem kia = StoreItem("Kia Sportage", 100, "assets/KiaSportage2015.png");
 StoreItem ute = StoreItem("Vintage Ute", 50, "assets/old ute.jpg");
@@ -46,8 +47,8 @@ StoreItem ferrari = StoreItem("Ferrari", 2000, "assets/ferrari.jpg");
 StoreItem bmw = StoreItem("BMW Sedan", 500, "assets/bmw sedan.jpg");
 StoreItem suv = StoreItem("Jeep SUV", 250, "assets/suv.jpg");
 
-List<StoreItem> STORE = [kia, ute, suv, bmw, lambo, ferrari];
-
+List<StoreItem> STORE = [kia, ute, lambo, ferrari, bmw, suv];
+int storePointer = 0;
 
 const Icon leftArrow = Icon(Icons.arrow_left_outlined, color: Colors.deepPurpleAccent);
 const Icon rightArrow = Icon(Icons.arrow_right_outlined, color: Colors.deepPurpleAccent);
@@ -57,6 +58,10 @@ const TextStyle violationsStyle = TextStyle(fontSize: 20, color: Colors.white);
 const TextStyle minorViolationsStyle = TextStyle(fontSize: 20, color: Colors.lightGreen);
 const TextStyle majorViolationsStyle = TextStyle(fontSize: 20, color: Colors.yellow);
 const TextStyle fatallySeriousViolationsStyle = TextStyle(fontSize: 20, color: Colors.red);
+const TextStyle noViolationsStyle = TextStyle(fontSize: 20, color: Colors.green);
+const TextStyle hasViolationsStyle = TextStyle(fontSize: 20, color: Colors.red);
+
+
 
 const TextStyle homeStyle = TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold);
 

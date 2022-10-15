@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/Helper/globals.dart' as globals;
 import 'package:frontend/Helper/read_drive_data.dart';
+import 'package:frontend/Pages/history.dart';
 import 'package:frontend/Pages/violations.dart';
 import 'package:frontend/Pages/leaderboard.dart';
 
@@ -69,8 +70,12 @@ class Home extends StatelessWidget {
                       ),
                     ),
                     onTap: () {
-                      Navigator.pop(context);
-                      Navigator.pushNamed(context, '/settings');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const History(),
+                        ),
+                      );
                     },
                     tileColor: Colors.deepPurpleAccent,
                   ),
@@ -126,8 +131,7 @@ class Home extends StatelessWidget {
                       ),
                     ),
                     onTap: () {
-                      Navigator.pop(context);
-                      Navigator.pushNamed(context, '/login');
+                      Navigator.pushNamedAndRemoveUntil(context, '/login', (_) => false);
                     },
                     tileColor: Colors.deepPurpleAccent,
                   ),
@@ -162,10 +166,8 @@ class _HomeBodyState extends State<HomeBody> {
       padding: const EdgeInsets.all(16.0),
       child: RefreshIndicator(
         onRefresh: () async {
-
           await _refreshData();
           setState(() {});
-          //return Future<void>.delayed(const Duration(seconds: 1));
         },
 
         child: ListView(
@@ -337,7 +339,6 @@ class _HomeBodyState extends State<HomeBody> {
                         splashColor: Colors.purple,
                         borderRadius: BorderRadius.circular(30.0),
                         onTap:() {
-                          Navigator.pop(context);
                           Navigator.pushNamed(context, '/store');
                         },
                         child: Padding(
@@ -366,7 +367,7 @@ class _HomeBodyState extends State<HomeBody> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
+                  padding: const EdgeInsets.only(top: 8.0),
                   child: SizedBox(
                     height: 330,
                     width: 480,
@@ -379,8 +380,12 @@ class _HomeBodyState extends State<HomeBody> {
                         splashColor: Colors.purple,
                         borderRadius: BorderRadius.circular(30.0),
                         onTap:() {
-                          Navigator.pop(context);
-                          Navigator.pushNamed(context, '/history');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const History(),
+                            ),
+                          );
                         },
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),

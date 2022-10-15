@@ -11,7 +11,8 @@ class Trip {
   String duration;
   List<Violation> violationList;
   int numViolations;
+  int totalTripPenalty;
 
   Trip(this.name, this.tripNum, this.startTime, this.endTime, this.distance,
-       this.duration, this.violationList, this.numViolations);
+       this.duration, this.violationList, this.numViolations, this.totalTripPenalty);
 }
