@@ -369,7 +369,7 @@ class _HomeBodyState extends State<HomeBody> {
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
                   child: SizedBox(
-                    height: 330,
+                    height: 340,
                     width: 480,
                     child: Card(
                       color: Colors.white10,
@@ -420,23 +420,23 @@ List<Widget> recentDrives() {
       mainAxisAlignment: MainAxisAlignment.start,
       children: const [
         Text(
-          "Your Recent Drives",
+          "Your Recent Trips",
           style: homeStyle,
         ),
       ],
     ),
   );
-  if (TRIPS.length <= 1) {
+  if (TRIPS.isEmpty) {
     lines.add(
       const Padding(
         padding: EdgeInsets.only(top: 8.0),
-        child: Text("No recent drives detected. Keep driving to earn more DACKS\$ and track your progress!",
+        child: Text("No recent trips recorded. Make sure you record your trips to earn more DACKS\$ and track your progress!",
         style: homeStyle),
       )
     );
   }
   else {
-    var actualTrips = TRIPS.sublist(1);
+    var actualTrips = TRIPS;
     if (actualTrips.length > 3) {
       actualTrips = actualTrips.sublist(actualTrips.length - 3);
     }
@@ -455,31 +455,35 @@ List<Widget> recentDrives() {
             borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
           child: Padding(
-            padding: const EdgeInsets.only(left: 12.0),
+            padding: const EdgeInsets.fromLTRB(12.0, 0, 12, 0),
             child: Column(
               children: [
                 Row(
                   children: [
+                    const Text("Trip date:", style: homeStyle),
+                    const Spacer(),
                     Text(date, style: homeStyle),
-                    const Spacer(),
                   ],
                 ),
                 Row(
                   children: [
+                    const Text("Drive duration: ", style: homeStyle),
+                    const Spacer(),
                     Text(duration, style: homeStyle),
-                    const Spacer(),
                   ],
                 ),
                 Row(
                   children: [
+                    const Text("Drive distance (km): ", style: homeStyle),
+                    const Spacer(),
                     Text(distance, style: homeStyle),
-                    const Spacer(),
                   ],
                 ),
                 Row(
                   children: [
-                    Text(violations.toString(), style: homeStyle),
+                    const Text("Violations:", style: homeStyle),
                     const Spacer(),
+                    Text(violations.toString(), style: homeStyle),
                   ],
                 ),
               ],
