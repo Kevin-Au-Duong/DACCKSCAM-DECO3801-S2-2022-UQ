@@ -81,6 +81,8 @@ List<Widget> buildRowList() {
     var name = trip.name;
     var startTime = trip.startTime;
     var endTime = trip.endTime;
+    var distance = (trip.distance / 1000).toStringAsFixed(2);
+    var duration = trip.duration.split(".")[0];
     var numViolations = trip.numViolations;
     var totalTripPenalty = trip.totalTripPenalty;
     violationContainer = Padding(
@@ -129,6 +131,34 @@ List<Widget> buildRowList() {
                         textAlign: TextAlign.left,
                         style: violationsStyle),
                     Text(endTime,
+                        textAlign: TextAlign.left,
+                        style: violationsStyle),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 4.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text("Duration: ",
+                        textAlign: TextAlign.left,
+                        style: violationsStyle),
+                    Text(duration,
+                        textAlign: TextAlign.left,
+                        style: violationsStyle),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 4.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text("Distance travelled (km): ",
+                        textAlign: TextAlign.left,
+                        style: violationsStyle),
+                    Text(duration,
                         textAlign: TextAlign.left,
                         style: violationsStyle),
                   ],

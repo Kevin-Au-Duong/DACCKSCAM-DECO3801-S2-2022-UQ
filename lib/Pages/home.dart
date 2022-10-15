@@ -379,7 +379,7 @@ class _HomeBodyState extends State<HomeBody> {
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
                   child: SizedBox(
-                    height: 340,
+                    height: 350,
                     width: 480,
                     child: Card(
                       color: Colors.white10,
@@ -455,6 +455,13 @@ List<Widget> recentDrives() {
       var distance = (trip.distance / 1000).toStringAsFixed(2);
       var duration = trip.duration.split(".")[0];
       var violations = trip.numViolations;
+      TextStyle style;
+      if (violations == 0) {
+        style = noViolationsStyle;
+      }
+      else {
+        style = hasViolationsStyle;
+      }
 
       var row =
       Padding(
@@ -493,7 +500,7 @@ List<Widget> recentDrives() {
                   children: [
                     const Text("Violations:", style: homeStyle),
                     const Spacer(),
-                    Text(violations.toString(), style: homeStyle),
+                    Text(violations.toString(), style: style),
                   ],
                 ),
               ],
