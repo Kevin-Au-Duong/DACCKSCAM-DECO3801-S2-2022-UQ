@@ -18,9 +18,9 @@ Trip placeholderTrip = Trip('Placeholder', 0, '0', '0', 0, "0", [], 0, 0);
 List<Violation> violationsList1 = [Violation("Speeding", "Major", -100, 2),
                                    Violation("Stop Sign", "Minor", -50, 1)];
 List<Violation> violationsList2 = [];
-Trip dummy1 = Trip('abc', 2, "10/11/2022 1:47:33 AM", "10/11/2022 1:47:50 AM",
+Trip dummy1 = Trip('abc', 2, "10/15/2022 1:47:33 AM", "10/11/2022 1:47:50 AM",
               100, "00:00:43.3193182", violationsList1, 3, 250);
-Trip dummy2 = Trip('123', 1, "10/11/2022 1:52:13 AM", "10/11/2022 1:52:22 AM",
+Trip dummy2 = Trip('123', 1, "10/14/2022 1:52:13 AM", "10/11/2022 1:52:22 AM",
               250, "00:35:09.5659543", violationsList2, 0, 0);
 
 List<Trip> TRIPS = [placeholderTrip, dummy2, dummy1];

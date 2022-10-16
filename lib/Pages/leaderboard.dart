@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../Helper/friend.dart';
 import '../Helper/globals.dart';
+import '../Helper/trip.dart';
 
 class Leaderboard extends StatelessWidget {
   const Leaderboard({super.key});
@@ -43,6 +44,8 @@ class LeaderboardBody extends StatefulWidget {
 }
 
 class _LeaderboardBodyState extends State<LeaderboardBody> {
+  String streak = TRIPS.length.toString();
+
   @override
   Widget build(BuildContext context) {
     return Center(child: Container(
@@ -99,7 +102,11 @@ class _LeaderboardBodyState extends State<LeaderboardBody> {
                   ]
                 ),
               ),
-              const Spacer(),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8.0,20,8,8),
+                child: Text("Your current streak of trips is $streak. Keep your streak going to earn bonus DACCK\$ and other rewards.",
+                    style: violationsStyle),
+              )
             ],
         ),
       ),
@@ -142,5 +149,3 @@ List<Widget> buildLeaderboard() {
   }
   return lines;
 }
-
-

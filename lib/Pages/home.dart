@@ -186,6 +186,11 @@ class _HomeBodyState extends State<HomeBody> {
                         style: const TextStyle(fontSize: 30, color: Colors.white),
                         textAlign: TextAlign.center,
                       ),
+                      const Spacer(),
+                      Text(
+                        "DACCK\$: $totalPoints",
+                        style: const TextStyle(fontSize: 30, color: Colors.white),
+                      )
                     ],
                   ),
                 ),
