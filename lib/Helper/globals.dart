@@ -47,7 +47,7 @@ StoreItem ferrari = StoreItem("Ferrari", 2000, "assets/ferrari.jpg");
 StoreItem bmw = StoreItem("BMW Sedan", 500, "assets/bmw sedan.jpg");
 StoreItem suv = StoreItem("Jeep SUV", 250, "assets/suv.jpg");
 
-List<StoreItem> STORE = [kia, ute, lambo, ferrari, bmw, suv];
+List<StoreItem> STORE = [kia, ute, suv, bmw, lambo, ferrari];
 int storePointer = 0;
 
 const Icon leftArrow = Icon(Icons.arrow_left_outlined, color: Colors.deepPurpleAccent);

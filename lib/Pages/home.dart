@@ -127,6 +127,25 @@ class Home extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30)
                     ),
                     title: const Text(
+                      'QLD Driving Rules',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.pushNamed(context, '/rules');
+                    },
+                    tileColor: Colors.deepPurpleAccent,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)
+                    ),
+                    title: const Text(
                       'Log Out',
                       style: TextStyle(
                         color: Colors.white,

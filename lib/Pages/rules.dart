@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Page extends StatelessWidget {
-  const Page({super.key});
+class Rules extends StatelessWidget {
+  const Rules({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +30,13 @@ class Page extends StatelessWidget {
 
       ),
       // body: const Text("DAACKS"), backgroundColor: Colors.deepPurple,
-      body: const PageBody(), backgroundColor: Colors.deepPurple,
+      body: const RulesBody(), backgroundColor: Colors.deepPurple,
     );
   }
 }
 
-class PageBody extends StatelessWidget {
-  const PageBody({super.key});
+class RulesBody extends StatelessWidget {
+  const RulesBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class PageBody extends StatelessWidget {
           )
       ),
       child: const Text(
-          "Stateful template",
+          "QLD Driving Rules",
           style: TextStyle(fontSize: 30, color: Colors.white)),
     ),
     );
