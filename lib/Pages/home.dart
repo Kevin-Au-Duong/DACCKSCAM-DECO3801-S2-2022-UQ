@@ -183,6 +183,8 @@ class _HomeBodyState extends State<HomeBody> {
 
   @override
   Widget build(BuildContext context) {
+    print(vehicleImage);
+    print(vehicleName);
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: RefreshIndicator(

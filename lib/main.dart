@@ -12,7 +12,7 @@ import 'Pages/violations.dart';
 
 void main() {
   runApp(MaterialApp(
-    initialRoute: '/home',
+    initialRoute: '/login',
     routes: {
       '/login': (context) => const Login(),
       '/home': (context) => const Home(),
