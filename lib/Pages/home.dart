@@ -207,11 +207,21 @@ class _HomeBodyState extends State<HomeBody> {
                         style: const TextStyle(fontSize: 30, color: Colors.white),
                         textAlign: TextAlign.center,
                       ),
-                      const Spacer(),
+
+
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: Row(
+                    //mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
                       Text(
                         "DACCK\$: $totalPoints",
                         style: const TextStyle(fontSize: 30, color: Colors.white),
-                      )
+                        textAlign: TextAlign.left,
+                      ),
                     ],
                   ),
                 ),
