@@ -1,16 +1,36 @@
-# frontend
+# DACCKSCAM
 
-A new Flutter project.
+A mobile application that tracks the driving habits of Aussie drivers to help them improve their driving or overcome their bad driving habtis. 
 
-## Getting Started
+## 🔧 Setting up Local Devvelopment (App):
+Required:
+- Git bash
+- Latest version of Android Studio
+- Flutter version >3.0.0
+- Dart SDK version >= 2.18.2
 
-This project is a starting point for a Flutter application.
+```bash
+$ git clone https://github.com/Kevin-Au-Duong/DACCKSCAM-DECO3801-S2-2022-UQ.git
+```
 
-A few resources to get you started if this is your first Flutter project:
+Set up guide for development:
+1. Install Flutter through the git command line, ensure to get stable branch. Ensure that the Flutter version is 3.3.1 or newer. Link: https://docs.flutter.dev/development/tools/sdk/releases?tab=windows
+2. Add the Flutter path variable according to the instructions on the Flutter installation website 
+3. Go to the ~/flutter/bin directory, open a cmd instance and run “flutter doctor” 
+4. Install Android Studio. Ensure latest version. 
+5. Install Flutter plugin on Android Studio 
+6. Choose open project from VCS on Android Studio with the git link provided above
+7. Go to Device Manager on the right or bottom side bar menu and create virtual device 
+8. Choose “Nexus 6” from device list and use Android 11.0 or later
+9. Start the virtual device 
+10. Click build to start emulating the app 
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🔨 Building the .APK (App):
+1. Choose Build on the top left action menu bar
+2. Choose sub-menu Flutter
+3. Choose build APK
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Now you have an .APK file which you can run on an Android device/emulator!
+
+__*Note that the .APK file will only run on any Android systems, but the accompanied simulation will only run on systems that are using ARMv7 CPU architecture or support ARMv7 .APK files.*__
+
