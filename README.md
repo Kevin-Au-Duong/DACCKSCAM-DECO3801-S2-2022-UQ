@@ -26,9 +26,9 @@ Set up guide for development:
 10. Click build to start emulating the app 
 
 ## 🔨 Building the .APK (App):
-1. Choose Build on the top left action menu bar
-2. Choose sub-menu Flutter
-3. Choose build APK
+1. Choose 'Build' on the top left action menu bar
+2. Choose sub-menu 'Flutter'
+3. Choose 'build APK'
 
 Now you have an .APK file which you can run on an Android device/emulator!
 
