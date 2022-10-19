@@ -32,5 +32,5 @@ Set up guide for development:
 
 Now you have an .APK file which you can run on an Android device/emulator!
 
-__*Note that the .APK file will only run on any Android systems, but the accompanied simulation will only run on systems that are using ARMv7 CPU architecture or support ARMv7 .APK files.*__
+__*Note that the .APK file will only run on any Android system later than Lollipop (5.0), but the accompanied simulation will only run on systems that are using ARMv7 CPU architecture or support ARMv7 .APK files.*__
 
