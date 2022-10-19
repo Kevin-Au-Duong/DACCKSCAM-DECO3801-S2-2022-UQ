@@ -2,7 +2,7 @@
 
 A mobile application that tracks the driving habits of Aussie drivers to help them improve their driving or overcome their bad driving habtis. 
 
-## 🔧 Setting up Local Devvelopment (App):
+## 🔧 Setting up Local Development (App):
 Required:
 - Git bash
 - Latest version of Android Studio
